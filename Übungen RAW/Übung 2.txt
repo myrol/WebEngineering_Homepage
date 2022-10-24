@@ -1,0 +1,32 @@
+div div div:focus .inner
+= 1 + 1 + 1 + 1 + 10 = 14
+
+h1 + div.main
+= 1 + 1 + 10 = 12
+
+div a:link[href*='h-brs']
+= 1 + 1 + 1 + 10 = 13
+
+nav > a:hover::before
+= 1 + 1 + 1 + 10 = 13
+
+ul#primary-nav li.active
+= 1 + 100 + 1 + 1 = 103
+
+2.
+#ffffff
+> HSL(0, 0%, 100%)
+
+#000
+> HSL(0, 0%, 0%)
+
+#ab0978
+> HSL(319, 90%, 35.3%)
+
+rgb(127, 225, 33)
+> HSL(95, 100%, 56.5%)
+
+rgba(255, 127, 33, 0.8)
+> HSLA(25, 100%, 56%, 0.8)
+
+3.
