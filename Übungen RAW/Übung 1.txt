@@ -1,0 +1,134 @@
+- Das ist nicht das, was sie sich unter "Hypertext" vorgestellt hatten.
+Keine Broken-Links: Es sollte alles sauber sein.
+=> Referenzielle Integrität
+	- Preis: Zeit. Man müsste, vorallem beim löschen, überall die
+		"Fremdschlüssel" entsprechend aktualisieren, die auf
+		das gelöschte Element zeigten. Bei einem WORLD-wide-web
+		mit extrem vielen Websites wäre das viel zu langsam.
+- ls "zu vage" verstanden: Unterschied zu Evolvierbarkeit!
+
+
+Erfolg:
+- Wird von Marc Andreesen, NCSA, entdeckt
+	- Darf den ersten W3-Browser bauen
+	-> Mosaic
+- Erste W3-Konferenz und gründung des W3-Consortium
+
+---- 1.2 HTTP ----
+1. OK. Anfrage richtig verarbeitet
+2. Moved Permanently. Die URL wurde permanent geändert und die neue
+	wird im Response angegeben
+3. Bad Request. Fehlerhafte Anfrage des Clients. Der Server führt
+	die Request nicht aus.
+4. Forbidden. Keine Zugriffsrechte.
+
+5. GET verwenden, um die OPTIONS zu cachen
+
+
+---- 1.3 HTML ----
+1. HTML steht für Hyper Text Markup Language und ist der Standard für
+	die erstellung von Webseiten.
+	Es beschreibt die Struktur der Webseite mithilfe von Elementen,
+	die dem Browser zeigen, wie etwas dargestellt werden soll.
+
+2. 
+<ol>
+	<li> Schachtelungstiefe - 1
+		<ol>
+			<li> Schachtelungstiefe - 2
+				<ol>
+					<li> Schachtelungstiefe - 3
+						<ol>
+						</ol>	
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+</ol>
+
+3.
+Eine HTML-Tabelle beginnt mit dem Tag <table> (</table>). Eine Reihe wird mit <tr> (</tr>) (Table Row)
+erstellt und ein Element mit <td> (</td) (Table Data).
+Eine Spaltenüberschrift erstellt man mit <th> (</th>) (Table Header)
+
+4. Immer lower-case filenames benutzen. Sonst kann es Probleme mit einigen Web-Servern geben,
+die Case sensitive sind.
+
+HTML files sollten immer .html (oder .htm) als File-Extension haben.
+CSS files sollten immer .css als File-Extension haben.
+JavaScript files sollten immer .js als File-Extension haben.
+
+Die default Seite sollte index.html oder default.html heißen
+
+Bei Pfaden: Bedenken ob man absolute oder relative Dateipfade angibt!
+Die Dateien sollten außerdem nicht den Ort wechseln während man sich auf der Seite befindet.
+
+5. Man kann mit Listen und Links sich ein Menü zusammenbauen, der dann auf die anderen
+HTML-Dokumenten zeigt.
+
+6. 
+	-<img>: Tag für das einbetten von Bildern. Keine schließenden Klammern.
+	-src: URL des Bildes. (Source)
+	-alt: Text der dargestellt wird, wenn es einen Fehler in der src, eine langsame Verbindung,
+		oder der User ein Screen-Reader benutzt.
+	-width/height: Breite und Höhe des Bilds in pixeln. W3School empfiehlt allerdings style
+	- CSS's float benutzen, um das Bild neben dem Text darstellen zu lassen.
+
+---- 1.4 HTML Wireframe ----
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>Übung 1.2: Inventors of the Web</h1>
+		<ul>
+			<li><b><u>Tim Berners-Lee:</b></u>: WWW, HTTP, HTML, URI</li>
+			<li><b>Hakom Lie and Bert Bos:</b> CSS</li>
+			<li><b>Brendan Eich:</b> JavaScript</li>
+		</ul>
+		
+		<hr>
+
+		<h2>Inventors of the WWW</h2>
+		<table>
+			<tr>
+				<th>Inventors of the WWW</th>
+			</tr>
+			<tr>
+				<th>WWW</th>
+				<th>HTML</th>
+				<th>CSS</th>
+				<th>JavaScript</th>
+			</tr>
+			<tr>
+				<td>Tim Berners-Lee</td>
+				<td>Tim Berners-Lee</td>
+				<td>Hakom Lie and Bert Bos</td>
+				<td>Brendan Eich</td>
+			</tr>
+		</table>
+		
+		<hr>
+		
+		<h3>Inventors of the WWW</h3>
+		
+		<table>
+			<tr>
+				<th>Inventors of the WWW</th>
+			</tr>
+			<tr>
+				<th>HTML</th>
+				<th>JavaScript</th>
+			</tr>
+			<tr>
+				<td> <img src="some/location" alt="Tim Berners-Lee"> </td>
+				<td> <img src="some/location" alt="Brendan Eich"> </td>
+			<tr>
+			<tr>
+				<td>Tim Berners-Lee</td>
+				<td>Brendan Eich</td>
+			</tr>
+		</table>
+		
+		<hr>
+	</body>
+</html>
