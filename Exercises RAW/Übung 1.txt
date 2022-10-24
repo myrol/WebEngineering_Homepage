@@ -1,17 +1,17 @@
 - Das ist nicht das, was sie sich unter "Hypertext" vorgestellt hatten.
 Keine Broken-Links: Es sollte alles sauber sein.
-=> Referenzielle Integrität
+=&gt; Referenzielle Integrität
 	- Preis: Zeit. Man müsste, vorallem beim löschen, überall die
 		"Fremdschlüssel" entsprechend aktualisieren, die auf
 		das gelöschte Element zeigten. Bei einem WORLD-wide-web
 		mit extrem vielen Websites wäre das viel zu langsam.
-- ls "zu vage" verstanden: Unterschied zu Evolvierbarkeit!
+- als "zu vage" verstanden: Unterschied zu Evolvierbarkeit!
 
 
 Erfolg:
 - Wird von Marc Andreesen, NCSA, entdeckt
 	- Darf den ersten W3-Browser bauen
-	-> Mosaic
+	-&gt; Mosaic
 - Erste W3-Konferenz und gründung des W3-Consortium
 
 ---- 1.2 HTTP ----
@@ -32,25 +32,22 @@ Erfolg:
 	die dem Browser zeigen, wie etwas dargestellt werden soll.
 
 2. 
-<ol>
-	<li> Schachtelungstiefe - 1
-		<ol>
-			<li> Schachtelungstiefe - 2
-				<ol>
-					<li> Schachtelungstiefe - 3
-						<ol>
-						</ol>	
-					</li>
-				</ol>
-			</li>
-		</ol>
-	</li>
-</ol>
+&lt;ol&gt;
+	&lt;li&gt; Schachtelungstiefe - 1
+		&lt;ol&gt;
+			&lt;li&gt; Schachtelungstiefe - 2
+				&lt;ol&gt;
+					&lt;li&gt; Schachtelungstiefe - 3
+						&lt;ol&gt;
+						&lt;/ol&gt;	
+					&lt;/li&gt;
+				&lt;/ol&gt;
+			&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
 
 3.
-Eine HTML-Tabelle beginnt mit dem Tag <table> (</table>). Eine Reihe wird mit <tr> (</tr>) (Table Row)
-erstellt und ein Element mit <td> (</td) (Table Data).
-Eine Spaltenüberschrift erstellt man mit <th> (</th>) (Table Header)
 
 4. Immer lower-case filenames benutzen. Sonst kann es Probleme mit einigen Web-Servern geben,
 die Case sensitive sind.
@@ -68,7 +65,7 @@ Die Dateien sollten außerdem nicht den Ort wechseln während man sich auf der S
 HTML-Dokumenten zeigt.
 
 6. 
-	-<img>: Tag für das einbetten von Bildern. Keine schließenden Klammern.
+	-&lt;img&gt;: Tag für das einbetten von Bildern. Keine schließenden Klammern.
 	-src: URL des Bildes. (Source)
 	-alt: Text der dargestellt wird, wenn es einen Fehler in der src, eine langsame Verbindung,
 		oder der User ein Screen-Reader benutzt.
@@ -76,59 +73,59 @@ HTML-Dokumenten zeigt.
 	- CSS's float benutzen, um das Bild neben dem Text darstellen zu lassen.
 
 ---- 1.4 HTML Wireframe ----
-<!DOCTYPE html>
-<html>
-	<body>
-		<h1>Übung 1.2: Inventors of the Web</h1>
-		<ul>
-			<li><b><u>Tim Berners-Lee:</b></u>: WWW, HTTP, HTML, URI</li>
-			<li><b>Hakom Lie and Bert Bos:</b> CSS</li>
-			<li><b>Brendan Eich:</b> JavaScript</li>
-		</ul>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Übung 1.2: Inventors of the Web&lt;/h1&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;b&gt;&lt;u&gt;Tim Berners-Lee:&lt;/b&gt;&lt;/u&gt;: WWW, HTTP, HTML, URI&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;Hakom Lie and Bert Bos:&lt;/b&gt; CSS&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;Brendan Eich:&lt;/b&gt; JavaScript&lt;/li&gt;
+		&lt;/ul&gt;
 		
-		<hr>
+		&lt;hr&gt;
 
-		<h2>Inventors of the WWW</h2>
-		<table>
-			<tr>
-				<th>Inventors of the WWW</th>
-			</tr>
-			<tr>
-				<th>WWW</th>
-				<th>HTML</th>
-				<th>CSS</th>
-				<th>JavaScript</th>
-			</tr>
-			<tr>
-				<td>Tim Berners-Lee</td>
-				<td>Tim Berners-Lee</td>
-				<td>Hakom Lie and Bert Bos</td>
-				<td>Brendan Eich</td>
-			</tr>
-		</table>
+		&lt;h2&gt;Inventors of the WWW&lt;/h2&gt;
+		&lt;table&gt;
+			&lt;tr&gt;
+				&lt;th&gt;Inventors of the WWW&lt;/th&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;th&gt;WWW&lt;/th&gt;
+				&lt;th&gt;HTML&lt;/th&gt;
+				&lt;th&gt;CSS&lt;/th&gt;
+				&lt;th&gt;JavaScript&lt;/th&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt;Tim Berners-Lee&lt;/td&gt;
+				&lt;td&gt;Tim Berners-Lee&lt;/td&gt;
+				&lt;td&gt;Hakom Lie and Bert Bos&lt;/td&gt;
+				&lt;td&gt;Brendan Eich&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
 		
-		<hr>
+		&lt;hr&gt;
 		
-		<h3>Inventors of the WWW</h3>
+		&lt;h3&gt;Inventors of the WWW&lt;/h3&gt;
 		
-		<table>
-			<tr>
-				<th>Inventors of the WWW</th>
-			</tr>
-			<tr>
-				<th>HTML</th>
-				<th>JavaScript</th>
-			</tr>
-			<tr>
-				<td> <img src="some/location" alt="Tim Berners-Lee"> </td>
-				<td> <img src="some/location" alt="Brendan Eich"> </td>
-			<tr>
-			<tr>
-				<td>Tim Berners-Lee</td>
-				<td>Brendan Eich</td>
-			</tr>
-		</table>
+		&lt;table&gt;
+			&lt;tr&gt;
+				&lt;th&gt;Inventors of the WWW&lt;/th&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;th&gt;HTML&lt;/th&gt;
+				&lt;th&gt;JavaScript&lt;/th&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt; &lt;img src="some/location" alt="Tim Berners-Lee"&gt; &lt;/td&gt;
+				&lt;td&gt; &lt;img src="some/location" alt="Brendan Eich"&gt; &lt;/td&gt;
+			&lt;tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt;Tim Berners-Lee&lt;/td&gt;
+				&lt;td&gt;Brendan Eich&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
 		
-		<hr>
-	</body>
-</html>
+		&lt;hr&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
