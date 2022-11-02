@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .navigation {
+            width: 100%;
+            list-style-type: none;
+            display: flex;
+            flex-flow: row wrap;
+            padding: 0;
+            background: #ffc4c4;
+            border-radius: 5px;
+            margin: 0 0 5px;
+        }
+
+        li {
+            display: inline;
+            font-family: Arial
+        }
+
+        li:hover {
+            background-color: #b49281;
+            border-radius: 5px;
+        }
+
+        li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+
+        aside {
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        aside.left {
+            background-color: #b3dab3;
+        }
+
+        aside.right {
+            background-color: #d9cdb2;
+        }
+
+        article {
+            border-radius: 5px;
+            background-color: #b2bbd9;
+            margin-bottom: 5px;
+        }
+
+        @media screen {
+            aside {
+                width: 20%;
+            }
+            article {
+                width: calc(60% - 10px);
+                margin-inline: 5px;
+                height: 700px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            aside.left {
+                width: 20%;
+            }
+            aside.right {
+                width: 100%;
+                height: 100px;
+            }
+            article {
+                width: calc(80% - 5px);
+                margin: 0 0 5px 5px;
+                height:500px;
+            }
+        }
+
+        @media screen and (max-width: 300px) {
+            aside.left {
+                order: 2;
+                width: calc(50% - 3px);
+                margin-right: 6px;
+            }
+            aside.right {
+                order: 3;
+                width: calc(50% - 3px);
+                height: 100px;
+            }
+            article {
+                order: 1;
+                width: 100%;
+                height:500px;
+                margin: 0 0 5px 0;
+            }
+            .navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="navigation">
+            <li> <a href="https://google.de">Link1</a> </li>
+            <li> <a href="https://google.de">Link2</a> </li>
+            <li> <a href="https://google.de">Link3</a> </li>
+            <li> <a href="https://google.de">Link4</a> </li>
+    </ul>
+
+    <aside class="left">
+        Text
+    </aside>
+    <article>
+        Text3
+    </article>
+    <aside class="right">
+        Text2
+    </aside>
+</body>
+</html>
