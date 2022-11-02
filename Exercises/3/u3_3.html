@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body {
+            background-color: #ebeae6;
+
+            display: grid;
+            grid-template: 40px 60px 5fr 1.5fr / 1fr 1fr;
+            grid-template-areas:
+                    'header header'
+                    'title title'
+                    'pic desc'
+                    'footer footer';
+            grid-gap: 5px;
+
+            font-family: Arial;
+        }
+
+        .navigation {
+            list-style-type: none;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            padding: 0;
+            background: #363637;
+            border-radius: 5px;
+            margin: 0 0 0px;
+            align-content: center;
+            grid-area: header;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16pt;
+            padding: 15px 0;
+
+            grid-area: title;
+        }
+
+        .desc {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16pt;
+            padding: 15px 0;
+            line-height: 3;
+
+            grid-area: desc;
+
+            border: 1px solid black;
+
+        }
+
+        .pic {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+
+            grid-area: pic;
+        }
+
+        .pic img {
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .button {
+            background-color: #f68d38;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #e0ae2e;
+        }
+
+        .footer {
+            background-color: #011826;
+            color: #dadada;
+            text-align: center;
+            padding: 40px 0;
+
+
+            grid-area: footer;
+            border: 1px solid black;
+        }
+
+        li {
+            height: 100%;
+            display: inline-block;
+            font-family: Arial;
+        }
+
+        li:hover {
+            background-color: #5c5c60;
+            border-radius: 5px;
+        }
+
+        li a {
+            display: block;
+            text-decoration: none;
+            color: #e2e2e2;
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                grid-template: 40px 60px 3fr 5fr 1.5fr / 1fr;
+                grid-template-areas:
+                    'header'
+                    'title'
+                    'desc'
+                    'pic'
+                    'footer';
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            body {
+                grid-template: 1fr 60px 3fr 5fr 1.5fr / 1fr;
+                grid-template-areas:
+                    'header'
+                    'title'
+                    'desc'
+                    'pic'
+                    'footer';
+            }
+
+            .navigation {
+                flex-flow: column wrap;
+            }
+
+            .pic img {
+                width: 180px;
+                height: 320px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<ul class="navigation">
+        <li> <a href="https://google.de">The book series</a> </li>
+        <li> <a href="https://google.de">Testimonials</a> </li>
+        <li> <a href="https://google.de">The Author</a> </li>
+        <li> <a href="https://google.de">Free resources</a> </li>
+</ul>
+
+<div class="title">
+    You don't know JavaScript
+</div>
+
+<div class="pic">
+    <img src="resources/landing-img.png" alt="Book Cover">
+</div>
+
+<div class="desc">
+    Don't just drift through Javascript.<br>
+    Understand how Javascript works.<br>
+    Start your journey through the bumpy side of Javascript.<br>
+
+    <button class="button">
+        ORDER YOUR COPY NOW
+    </button>
+</div>
+
+<div class="footer">
+    The first book in the series is absolutely free.<br>
+    <button class="button" style="width: 55%">
+        FIND OUT MORE ABOUT THIS OFFER
+    </button>
+</div>
+
+</body>
+</html>
