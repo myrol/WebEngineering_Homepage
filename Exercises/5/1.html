@@ -4,42 +4,72 @@
     <meta charset="UTF-8">
     <title>Übung 5</title>
 
-    <script>
-        function performanceTest() {
-            let one = document.getElementById("one");
-            let two = document.getElementById("two");
-            let three = document.getElementById("three");
-            let four = document.getElementById("four");
-
-            let results = [];
-
-            let start = performance.now();
-            one.innerHTML = "One and Done";
-            results[0] = performance.now() - start;
-
-            start = performance.now();
-            two.innerText = "Two and Done";
-            results[1] = performance.now() - start;
-
-            start = performance.now();
-            three.textContent = "Three and Done";
-            results[2] = performance.now() - start;
-
-            start = performance.now();
-            four.outerHTML = '<div id="four">Four and Done</div>';
-            results[3] = performance.now() - start;
-
-            document.getElementById("oneResult").innerText = results[0];
-            document.getElementById("twoResult").innerText = results[1];
-            document.getElementById("threeResult").innerText = results[2];
-            document.getElementById("fourResult").innerText = results[3];
+    <style>
+        body {
+            background: #232323;
         }
 
-    </script>
+        div {
+            color: #b3b3b3;
+            margin: auto;
+            font-size: 16pt;
+        }
+
+        .ueberschrift {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            font-family: "Fira Code", serif
+        }
+
+        .widebutton {
+            background: #cfcfcf;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #1a1a1a;
+            width: 400px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+
+        table, td, tr {
+            border: 1px solid #c4c4c4;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .userinput {
+            margin: auto;
+            width: 70%;
+            text-align: center;
+        }
+
+        input {
+            border-radius: 10px;
+            width: 80%;
+        }
+
+        .darkmode {
+            color: #b3b3b3;
+        }
+
+        .timer {
+            font-family: "Fira Code", serif;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<button onclick="performanceTest()">Click me for performance test!</button>
-<table style="border: 1px solid black" cellpadding="2px">
+<div class="ueberschrift">
+    <h1> Performance Test </h1>
+</div>
+<table>
     <tr>
         <td>
             <div id="one">One</div>
@@ -69,5 +99,179 @@
         </td>
     </tr>
 </table>
+<button class="widebutton" onclick="performanceTest()">Click me for performance test!</button>
+
+<div>
+    <div class="ueberschrift">
+        <h1>Rednerliste</h1>
+    </div>
+    <div class="userinput">
+        <input id="redner" onclick="add()" placeholder="Neuer Redner">
+        <button onclick="add()"> Add </button>
+    </div>
+</div>
+
+<div>
+    <ul id="rednerlist" class="darkmode">
+    </ul>
+</div>
+
+
+<!-- PERFORMANCE TEST -->
+<script>
+    let one = document.getElementById("one");
+    let two = document.getElementById("two");
+    let three = document.getElementById("three");
+    let four = document.getElementById("four");
+
+    function performanceTest() {
+        // p can be changed to use different timing methods.
+        let p = () => performance.now()
+        let results = [];
+
+        let start = p(); // Set starting point
+        one.innerHTML = "innerHTML";
+        results[0] = p() - start; // Calculate performance and store
+        // Repeat
+
+        start = p();
+        two.innerText = "innerText";
+        results[1] = p() - start;
+
+        start = p();
+        three.textContent = "textContent";
+        results[2] = p() - start;
+
+        start = p();
+        four.outerHTML = '<div id="four">outerHTML</div>';
+        results[3] = p() - start;
+
+        document.getElementById("oneResult").innerText = results[0];
+        document.getElementById("twoResult").innerText = results[1];
+        document.getElementById("threeResult").innerText = results[2];
+        document.getElementById("fourResult").innerText = results[3];
+    }
+</script>
+<!-- REDNERLISTE -->
+<script>
+    // This script has to be down here, else the DOM-Objects won't be initialized.
+    // DOM-Objects
+    let inputField = document.getElementById("redner")
+    let rednerlist = document.getElementById("rednerlist")
+
+    // Arrays for the redners
+    let rednerNames = []
+    let rednerTimers = []
+
+    // Current Redner. Only one timer can be active at a time
+    let currentRedner = -1;
+
+    // Converting milliseconds into hh:mm:ss
+    function millisecondsToHuman(ms) {
+        const seconds = Math.floor((ms / 1000) % 60);
+        const minutes = Math.floor((ms / 1000 / 60) % 60);
+        const hours = Math.floor(ms / 1000 / 60 / 60);
+
+        const humanized = [
+            pad(hours.toString(), 2),
+            pad(minutes.toString(), 2),
+            pad(seconds.toString(), 2),
+        ].join(':');
+
+        return humanized;
+    }
+    function pad(numberString, size) {
+        let padded = numberString;
+        while (padded.length < size) padded = `0${padded}`;
+        return padded;
+    }
+
+    // Add a redner
+    function add() {
+        if (inputField.value === '') {
+            inputField.placeholder='Enter A Name First!';
+            return;
+        }
+
+        addRedner(inputField.value);
+        updateList();
+
+        inputField.value = '';
+    }
+
+    // Update the redner arrays and set the current reader
+    function addRedner(name) {
+        let current = rednerNames.length;
+        rednerNames[current] = name; // Name of the new redner
+        rednerTimers[current] = 0; // Milliseconds
+
+        currentRedner = current;
+    }
+
+    // Updates the unordered list when a new redner is added.
+    function updateList() {
+        // Add a new redner <li>. Packed with a <div> for the timer
+        // And a <button> for stopping and starting the timer
+        rednerlist.innerHTML += '' +
+            '<li>' + rednerNames[rednerNames.length-1] + // Name
+            '<div class="timer" id="timer' + (rednerNames.length-1) + '"></div>' + // Timer-ID
+            '<button onclick="resetRedner()" id="b' + (rednerNames.length-1) + '" style="margin-left: 5px"></button></li>'; // Button ID
+
+        // Update all button texts
+        updateButtons(currentRedner)
+    }
+
+    // This function updates all button texts and onclick events.
+    // Each button calls this function to update the others.
+    function updateButtons() {
+        for (let i = 0; i < rednerNames.length; i++) {
+            let currentButton = document.getElementById("b" + i);
+            // ONLY the current redner should have the STOP button
+            if (i === currentRedner) {
+                currentButton.innerHTML = "Stop";
+                currentButton.onclick = function() {
+                    currentRedner = -1;
+                    updateButtons();
+                }
+            } else {
+                // Everybody else gets the START button.
+                // This way they can take over the current redner.
+                currentButton.innerHTML = "Start";
+                currentButton.onclick = function() {
+                    currentRedner = i;
+                    updateButtons();
+                };
+            }
+        }
+    }
+
+    /*
+        This function gets called every 1000ms.
+        If the currentRedner is not specified (-1), the function does nothing.
+        Else the function increments the timer by 1000ms and updates the
+        Timer in the document.
+     */
+    function incrementCurrentRedner() {
+        if (currentRedner === -1) return;
+
+        rednerTimers[currentRedner] += 1000;
+
+        const _id = "timer" + currentRedner;
+        const _content = millisecondsToHuman(rednerTimers[currentRedner]);
+        document.getElementById(_id).innerText = _content;
+    }
+
+    function resetRedner() {
+        currentRedner = -1;
+    }
+
+    /*
+        Every second:
+            The timer with the current Redner will be incremented by
+            1000ms every 1000ms and updated via getElementById.
+     */
+    window.setInterval(incrementCurrentRedner, 1000);
+
+</script>
 </body>
 </html>
