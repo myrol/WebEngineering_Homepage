@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 5</title>
+
+    <script>
+        function performanceTest() {
+            let one = document.getElementById("one");
+            let two = document.getElementById("two");
+            let three = document.getElementById("three");
+            let four = document.getElementById("four");
+
+            let results = [];
+
+            let start = performance.now();
+            one.innerHTML = "One and Done";
+            results[0] = performance.now() - start;
+
+            start = performance.now();
+            two.innerText = "Two and Done";
+            results[1] = performance.now() - start;
+
+            start = performance.now();
+            three.textContent = "Three and Done";
+            results[2] = performance.now() - start;
+
+            start = performance.now();
+            four.outerHTML = '<div id="four">Four and Done</div>';
+            results[3] = performance.now() - start;
+
+            document.getElementById("oneResult").innerText = results[0];
+            document.getElementById("twoResult").innerText = results[1];
+            document.getElementById("threeResult").innerText = results[2];
+            document.getElementById("fourResult").innerText = results[3];
+        }
+
+    </script>
+</head>
+<body>
+<button onclick="performanceTest()">Click me for performance test!</button>
+<table style="border: 1px solid black" cellpadding="2px">
+    <tr>
+        <td>
+            <div id="one">One</div>
+        </td>
+        <td>
+            <div id="two">Two</div>
+        </td>
+        <td>
+            <div id="three">Three</div>
+        </td>
+        <td>
+            <div id="four">Four</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="oneResult">0.0</div>
+        </td>
+        <td>
+            <div id="twoResult">0.0</div>
+        </td>
+        <td>
+            <div id="threeResult">0.0</div>
+        </td>
+        <td>
+            <div id="fourResult">0.0</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
