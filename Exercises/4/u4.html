@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 4</title>
+    <!-- Teilaufgabe 1 --->
+    <script>
+        function identity(x) {
+            return x;
+        }
+
+        function identity_function(x) {
+            return identity(x);
+        }
+
+        function add(x, y) {
+            return x + y;
+        }
+
+        function mul(x, y) {
+            return x * y;
+        }
+
+        function addf(x) {
+            return function(y) {
+                return x + y;
+            };
+        }
+
+        function applyf(func) {
+            return function(x) {
+                return function(y) {
+                    return func(x, y);
+                };
+            };
+        }
+    </script>
+
+    <!-- Teilaufgabe 2 --->
+    <script>
+        function Auto(kz) {
+            return {
+                kennzeichen : kz
+            };
+        }
+
+        function Person(auto_kz) {
+            return {
+                auto_kennzeichen : auto_kz
+            };
+        }
+
+        var a1 = Auto('1');
+        var a2 = Auto('2');
+        var a3 = Auto('3');
+        var a4 = Auto('4');
+
+        var p1 = Person('1');
+        var p2 = Person('2');
+        var p3 = Person('3');
+        var p4 = Person('1');
+
+        var autos = [a1, a2, a3, a4];
+        var personen = [p1, p2, p3, p4];
+
+        function conflict(auto) {
+            var matches = 0;
+            for (let i in personen) {
+                if (personen[i].auto_kennzeichen === auto.kennzeichen) {
+                    matches++;
+                }
+            }
+            // If more than one person is linked to car 'auto' it's a conflict.
+            return matches > 1;
+        }
+    </script>
+
+    <!-- Teilaufgabe 3 --->
+    <script>
+        var fibs = [0, 1];
+
+        function fib(n) {
+            if (n < 0) {
+                return -1;
+            }
+
+            if (n < fibs.length) {
+                return fibs[n];
+            }
+
+            while (fibs.length <= n) {
+                fibs[fibs.length] = fibs[fibs.length-1] + fibs[fibs.length-2]
+            }
+
+            return fibs[fibs.length-1];
+        }
+
+        function last_safe_integer_index() {
+            for (let i = 0; i < fibs.length; i++) {
+                if (fibs[i] >= Number.MAX_SAFE_INTEGER) {
+                    return i-1;
+                }
+            }
+        }
+
+        function last_max_value() {
+            for (let i = 0; i < fibs.length; i++) {
+                if (fibs[i] > Number.MAX_VALUE) {
+                    return i-1;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 onclick="console.log(applyf(add)(1)(1)); this.innerHTML = 'Clicked!';">Click me!</h1>
+    <h1 onclick="console.log(conflict(a3)); this.innerHTML = 'Clicked!';">Click me 2!</h1>
+    <h1 onclick="console.log(fib(x = prompt())); this.innerHTML = 'Clicked!';">Click me for fib number!</h1>
+    <h1 onclick="console.log(last_safe_integer_index()); this.innerHTML = last_safe_integer_index();">Click me for last safe int index!</h1>
+    <h1 onclick="console.log(last_max_value()); this.innerHTML = last_max_value();">Click me for last max value index!</h1>
+</body>
+</html>
