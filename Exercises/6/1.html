@@ -49,21 +49,53 @@
     </div>
 
     <script>
-        class Validator {
+        class BracketValidator {
             constructor() {
                 this.brackets = new Map();
                 this.brackets.set("(", ")");
                 this.brackets.set("[", "]");
                 this.brackets.set("{", "}");
+
+                this.foundBrackets = [];
             }
 
-            validate(phrase, position=0, currentOpenBracket=null) {
+            /**
+             * This method validates a string for correct bracket syntax.
+             * It ignores anything that isn't in the brackets Map.
+             * @param phrase - entered string
+             * @returns {boolean} - if the string is valid or not
+             */
+            validate(phrase) {
+                // Reset from last run
+                this.foundBrackets = [];
+                let currentPosition = 0;
+                while (currentPosition < phrase.length) {
+                    const currentCharacter = phrase[currentPosition];
 
+                    // Is it an open bracket?
+                    if (this.brackets.get(currentCharacter) !== undefined) {
+                        // This has to mean it's an open bracket, just push to stack.
+                        this.foundBrackets.push(currentCharacter);
+                    }
+
+                    // Is it a closed bracket?
+                    if (this.isClosedBracket(currentCharacter)) {
+                        if (this.brackets.get(this.foundBrackets[this.foundBrackets.length-1]) !== undefined) {
+                            this.foundBrackets.pop(currentCharacter);
+                        } else {
+                            return false;
+                        }
+                    }
+
+                    currentPosition++;
+                }
+
+                // Are there any open brackets left? if yes - fail.
+                return (this.foundBrackets.length === 0);
             }
 
             isClosedBracket(bracket) {
                 for (const b of this.brackets.values()) {
-                    console.log(`is ${bracket} equal to ${b}?`);
                     if (bracket === b) {
                         return true;
                     }
@@ -72,7 +104,7 @@
             }
         }
 
-        const v = new Validator();
+        const v = new BracketValidator();
 
         console.log(v.isClosedBracket("]"))
 
