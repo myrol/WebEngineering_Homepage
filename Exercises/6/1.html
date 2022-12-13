@@ -16,22 +16,49 @@
         }
 
         .field {
-            style: "width:60%"
+            width: 60%;
+            background: #3f3f3f;
+            color: #f1f1f1;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .button {
+            background: #a1a1a1;
+            border: 0px;
+            border-radius: 5px;
+        }
+
+        .text {
+            color: #e1e1e1;
+            font-family: Arial;
         }
     </style>
 </head>
 <body>
     <div class="div_field">
+        <h1 class="text">
+            Übung 6 - ECMA Script
+        </h1>
+    </div>
+    <div class="div_field">
         <textarea class="field" id="field" type="textarea" rows="10"></textarea>
     </div>
     <div class="div_field">
-        <button id="btn" style="width:100px">Validate</button>
+        <button class="button" id="btn" style="width:100px">Validate</button>
     </div>
 
     <script>
         class Validator {
             constructor() {
                 this.brackets = new Map();
+                this.brackets.set("(", ")");
+                this.brackets.set("[", "]");
+                this.brackets.set("{", "}");
+            }
+
+            validate(phrase, position, currentOpenBracket) {
+                return phrase
             }
         }
 
