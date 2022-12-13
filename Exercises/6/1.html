@@ -24,7 +24,7 @@
         }
 
         .button {
-            background: #a1a1a1;
+            background: #c1c1c1;
             border: 0px;
             border-radius: 5px;
         }
@@ -32,6 +32,10 @@
         .text {
             color: #e1e1e1;
             font-family: Arial;
+        }
+
+        #field {
+
         }
     </style>
 </head>
@@ -45,13 +49,14 @@
         <textarea class="field" id="field" type="textarea" rows="10"></textarea>
     </div>
     <div class="div_field">
-        <button class="button" id="btn" style="width:100px">Validate</button>
+        <button class="button" onclick="validateBrackets()" id="btn" style="width:100px">Validate</button>
     </div>
 
     <script>
         class BracketValidator {
             constructor() {
                 this.brackets = new Map();
+                // Enter any bracket combination you want into the map.
                 this.brackets.set("(", ")");
                 this.brackets.set("[", "]");
                 this.brackets.set("{", "}");
@@ -106,8 +111,22 @@
 
         const v = new BracketValidator();
 
-        console.log(v.isClosedBracket("]"))
+        const inputField = document.getElementById("field");
+        const validateButton = document.getElementById("btn");
 
+        function validateBrackets() {
+            const result = v.validate(inputField.value);
+            console.log(inputField.textContent)
+            console.log(result);
+
+            if (result === true) {
+                document.getElementById("field").style.border="1px solid green";
+                document.getElementById("field").style.color="#ccffcc";
+            } else {
+                document.getElementById("field").style.border="1px solid red";
+                document.getElementById("field").style.color="#ffcccc";
+            }
+        }
     </script>
 </body>
 </html>
