@@ -9,14 +9,14 @@
             background: #232323;
         }
 
-        .div_field {
+        .centered_field {
             display: flex;
             justify-content: center;
             width: 100%;
         }
 
         .field {
-            width: 60%;
+            width: 85%;
             background: #3f3f3f;
             color: #f1f1f1;
             border-radius: 5px;
@@ -27,6 +27,8 @@
             background: #c1c1c1;
             border: 0px;
             border-radius: 5px;
+            width: 85%;
+            height: 25px
         }
 
         .text {
@@ -37,19 +39,31 @@
         #field {
 
         }
+
+        @media screen and (min-width: 600px) {
+            .field {
+                width: 500px;
+            }
+        }
+
+        @media screen and (min-width: 400px) {
+            .button {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="div_field">
+    <div class="centered_field">
         <h1 class="text">
             Übung 6 - ECMA Script
         </h1>
     </div>
-    <div class="div_field">
+    <div class="centered_field">
         <textarea class="field" id="field" type="textarea" rows="10"></textarea>
     </div>
-    <div class="div_field">
-        <button class="button" onclick="validateBrackets()" id="btn" style="width:100px">Validate</button>
+    <div class="centered_field">
+        <button class="button" onclick="validateBrackets()" id="btn">Validate</button>
     </div>
 
     <script>
