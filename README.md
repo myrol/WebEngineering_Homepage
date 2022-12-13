@@ -1,6 +1,18 @@
 # Homepage von Erik Rohr
 
-## WICHTIG: Accounts "myrol" und "erikrohr" gehören beide mir. Ich versichere, dass ich alleine an diesem Projekt gearbeitet habe.
+## Vorab-Informationen 
+<table>
+<tr>
+    <td> Matrikel-Nummer </td>    
+    <td style="color: lightblue"> 9040077 </td>
+</tr>
+<tr>
+    <td> Name </td>
+    <td style="color: lightblue"> Erik Rohr </td>
+</tr>
+</table>
+
+Accounts "myrol" und "erikrohr" gehören beide mir. Ich versichere, dass ich alleine an diesem Projekt gearbeitet habe.
 
 ### Struktur:
 Exercises RAW → Rohe .txt Dateien, mit denen ich die Übungen bearbeitet habe. Nicht beachten.<br>
