@@ -57,10 +57,24 @@
                 this.brackets.set("{", "}");
             }
 
-            validate(phrase, position, currentOpenBracket) {
-                return phrase
+            validate(phrase, position=0, currentOpenBracket=null) {
+
+            }
+
+            isClosedBracket(bracket) {
+                for (const b of this.brackets.values()) {
+                    console.log(`is ${bracket} equal to ${b}?`);
+                    if (bracket === b) {
+                        return true;
+                    }
+                }
+                return false;
             }
         }
+
+        const v = new Validator();
+
+        console.log(v.isClosedBracket("]"))
 
     </script>
 </body>
