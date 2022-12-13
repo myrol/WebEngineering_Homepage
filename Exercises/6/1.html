@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 6</title>
+
+    <style>
+        body {
+            background: #232323;
+        }
+
+        .div_field {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .field {
+            style: "width:60%"
+        }
+    </style>
+</head>
+<body>
+    <div class="div_field">
+        <textarea class="field" id="field" type="textarea" rows="10"></textarea>
+    </div>
+    <div class="div_field">
+        <button id="btn" style="width:100px">Validate</button>
+    </div>
+
+    <script>
+        class Validator {
+            constructor() {
+                this.brackets = new Map();
+            }
+        }
+
+    </script>
+</body>
+</html>
