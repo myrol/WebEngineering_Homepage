@@ -142,5 +142,58 @@
             }
         }
     </script>
+    <script>
+        class Vorrang {
+            constructor(_elements) {
+                this.elements = new Map();
+                this.visited = [];
+
+                // Construct maps
+                for (const elem of _elements) {
+                    this.elements.set(elem[0], elem[1]);
+                }
+            }
+
+            next() {
+                for (const pair of this.elements) {
+                    if (this.isAlreadyVisited(pair[0]) === false &&
+                            this.isValue(pair[0]) === false) {
+                        this.visited.push(pair[0])
+                        return pair[0];
+                    }
+
+                    if (this.isAlreadyVisited(pair[0]) &&
+                            this.isAlreadyVisited(pair[1]) === false) {
+                        this.visited.push(pair[1])
+                        return pair[1];
+                    }
+                }
+            }
+
+            isAlreadyVisited(element) {
+                for (const vis of this.visited) {
+                    if (element === vis) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            isValue(element) {
+                for (const pair of this.elements) {
+                    if (element === pair[1]) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+        const studentenLeben = new Vorrang([
+            ["schlafen", "studieren"],
+            ["essen", "studieren"],
+            ["studieren", "prüfen"]
+        ]);
+    </script>
 </body>
 </html>
