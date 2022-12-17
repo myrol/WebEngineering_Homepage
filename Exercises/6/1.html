@@ -25,7 +25,7 @@
 
         .button {
             background: #c1c1c1;
-            border: 0px;
+            border: 0;
             border-radius: 5px;
             width: 85%;
             height: 25px
@@ -33,7 +33,7 @@
 
         .text {
             color: #e1e1e1;
-            font-family: Arial;
+            font-family: Arial, serif;
         }
 
         #field {
@@ -60,7 +60,7 @@
         </h1>
     </div>
     <div class="centered_field">
-        <textarea class="field" id="field" type="textarea" rows="10"></textarea>
+        <textarea class="field" id="field" rows="10"></textarea>
     </div>
     <div class="centered_field">
         <button class="button" onclick="validateBrackets()" id="btn">Validate</button>
@@ -126,7 +126,6 @@
         const v = new BracketValidator();
 
         const inputField = document.getElementById("field");
-        const validateButton = document.getElementById("btn");
 
         function validateBrackets() {
             const result = v.validate(inputField.value);
@@ -143,6 +142,10 @@
         }
     </script>
     <script>
+        /*
+            I didn't get the class to become an iterable.
+            If you want to iterate through Vorrang, use Vorrang.next();
+         */
         class Vorrang {
             constructor(_elements) {
                 this.elements = new Map();
@@ -168,6 +171,7 @@
                         return pair[1];
                     }
                 }
+                return null;
             }
 
             isAlreadyVisited(element) {
