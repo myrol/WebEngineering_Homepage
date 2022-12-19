@@ -163,22 +163,40 @@
             "Eine akademische Arbeit stellt eine individuelle Leistung dar, die eigenständig und allein auf Basis der im Literaturverzeichnis angegebenen Quellen erstellt wurde und in der alle Zitate als solche gekennzeichnet sind.\n" +
             "\"Ich erkläre hiermit, dass ich den akademischen Ehrencodex kenne und über die Folgen einer Missachtung oder Verletzung aufgeklärt worden bin.\""
 
-        function analyse(_text=text, _stopwords=stopwords) {
+        function analyse(_text=text, _stopwords=stopwords, _wordSeparators=[' ', ',', '.', '!', '?', ':', ';', '\n', '\"', '\'', '(', ')', '[', ']', '{', '}']) {
             let wordCount = new Map();
             let currentWord = "";
             for (let character of text) {
-                if (character !== ' ') {
+                if (!_wordSeparators.includes(character)) {
+                    // If it's not a space, add to currentWord
                     currentWord = currentWord.concat(character);
-                } else if (stopwords.includes(currentWord)) {
-                    currentWord = "";
-                } else {
+                    continue;
+                } else if (!stopwords.includes(currentWord) && currentWord !== '') {
+                    // If it's a space and not a stopword, add to wordCount Map
                     if (wordCount.get(currentWord) === undefined) {
                         wordCount.set(currentWord, 1);
                     } else {
                         wordCount.set(currentWord, wordCount.get(currentWord)+1);
                     }
                 }
+                currentWord = "";
             }
+
+            let wordCountSorted = []; // Sorted array by occurances (descending)
+            for (word of wordCount.keys()) {
+                wordCountSorted.push(word);
+            }
+            wordCountSorted = wordCountSorted.sort(function compareFn(a, b) {
+                return wordCount.get(b) - wordCount.get(a);
+            });
+
+            return wordCountSorted;
+        }
+
+        const mostOccurringWords = analyse();
+        for (let i = 0; i < mostOccurringWords.length; i++) {
+            if (i > 2) break;
+            console.log(mostOccurringWords[i]);
         }
     </script>
 </body>
