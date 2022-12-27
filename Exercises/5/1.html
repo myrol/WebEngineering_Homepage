@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <title>Übung 5</title>
 
-    <style>
-        body {
-            background: #232323;
-        }
+    <link rel="stylesheet" href="../../resources/dark-theme.css">
 
+    <style>
         div {
             color: #b3b3b3;
             margin: auto;
@@ -160,6 +158,7 @@
     let rednerlist = document.getElementById("rednerlist")
 
     // Arrays for the redners
+    // Hindsight: A Map would've worked better.
     let rednerNames = []
     let rednerTimers = []
 
@@ -167,6 +166,7 @@
     let currentRedner = -1;
 
     // Converting milliseconds into hh:mm:ss
+    // Source: https://stackoverflow.com/questions/29816872/how-can-i-convert-milliseconds-to-hhmmss-format-using-javascript
     function millisecondsToHuman(ms) {
         const seconds = Math.floor((ms / 1000) % 60);
         const minutes = Math.floor((ms / 1000 / 60) % 60);

@@ -4,48 +4,58 @@
     <meta charset="UTF-8">
     <title>Homepage Erik Rohr</title>
 
+    <link rel="stylesheet" href="resources/dark-theme.css">
+
     <style>
-        body {
-            background: #232323;
-            color: #e1e1e1;
-            font-family: Arial, serif
+        h3 {
+            font-family: "Calibri Light", serif;
+        }
+
+        ul {
+            list-style: none;
         }
 
         li {
             margin-bottom: 5px;
-            transition: 0.2s;
+            font-family: "Calibri Light", serif;
         }
 
         a {
-            color: #e1e1e1;
             text-decoration: none;
             font-size: 15pt;
+        }
+
+        .hover_element {
+            display: flex;
+            justify-content: center;
             opacity: 0.6;
             transition: 0.2s;
+            width: 100px;
         }
 
-        a:hover {
+        .hover_element:hover {
             opacity: 1;
-        }
-
-        li:hover {
             transform: translate(5px, 0);
         }
     </style>
 </head>
 <body>
-    <h1> Semesterprojekt Homepage "Solution-Navigation" </h1>
-    <h2> Erik Rohr </h2>
+    <div class="centered">
+        <h1> Semesterprojekt Homepage "Solution-Navigation" </h1>
+    </div>
+    <div class="centered">
+        <h3> by Erik Rohr </h3>
+    </div>
 
     <h2> Menü </h2>
     <ul>
-        <li> <a href="Exercises/1/1.html" target="_self">Übung 1</a> </li>
-        <li> <a href="Exercises/2/1.html" target="_self">Übung 2</a> </li>
-        <li> <a href="Exercises/3/1.html" target="_self">Übung 3</a> </li>
-        <li> <a href="Exercises/4/1.html" target="_self">Übung 4</a> </li>
-        <li> <a href="Exercises/5/1.html" target="_self">Übung 5</a> </li>
-        <li> <a href="Exercises/6/1.html" target="_self">Übung 6</a> </li>
-        <li> <a href="Exercises/7/1.html" target="_self">Übung 7</a> </li>
+        <li> <a href="Exercises/1/1.html" target="_self"><div class="hover_element">Übung 1</div></a> </li>
+        <li> <a href="Exercises/2/1.html" target="_self"><div class="hover_element">Übung 2</div></a> </li>
+        <li> <a href="Exercises/3/1.html" target="_self"><div class="hover_element">Übung 3</div></a> </li>
+        <li> <a href="Exercises/4/1.html" target="_self"><div class="hover_element">Übung 4</div></a> </li>
+        <li> <a href="Exercises/5/1.html" target="_self"><div class="hover_element">Übung 5</div></a> </li>
+        <li> <a href="Exercises/6/1.html" target="_self"><div class="hover_element">Übung 6</div></a> </li>
+        <li> <a href="Exercises/7/1.html" target="_self"><div class="hover_element">Übung 7</div></a> </li>
     </ul>
 </body>
 </html>

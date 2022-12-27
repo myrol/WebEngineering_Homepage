@@ -1,0 +1,19 @@
+body {
+    background: #232323;
+    color: #e1e1e1;
+    font-family: Arial, serif
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+a {
+    color: #8888ff;
+}
+
+li {
+    color: #c1c1c1;
+}

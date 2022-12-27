@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../../resources/dark-theme.css">
+
     <meta charset="UTF-8">
     <title>Übung 4</title>
     <!-- Teilaufgabe 1 --->
@@ -80,6 +82,10 @@
         var fibs = [0, 1];
 
         function fib(n) {
+            if (n === '') {
+                n = 1000;
+            }
+
             if (n < 0) {
                 return -1;
             }
@@ -115,7 +121,7 @@
 <body>
     <h1 onclick="console.log(applyf(add)(1)(1)); this.innerHTML = 'Clicked!';">Click me!</h1>
     <h1 onclick="console.log(conflict(a3)); this.innerHTML = 'Clicked!';">Click me 2!</h1>
-    <h1 onclick="console.log(fib(x = prompt())); this.innerHTML = 'Clicked!';">Click me for fib number!</h1>
+    <h1 onclick="console.log(fib(x = prompt('Default is 1000'))); this.innerHTML = 'Clicked!';">Click me for fib number!</h1>
     <h1 onclick="console.log(last_safe_integer_index()); this.innerHTML = last_safe_integer_index();">Click me for last safe int index!</h1>
     <h1 onclick="console.log(last_max_value()); this.innerHTML = last_max_value();">Click me for last max value index!</h1>
 </body>
