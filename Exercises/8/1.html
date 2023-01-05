@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../resources/dark-theme.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body {
+            margin: 10px 10px 10px 10px;
+        }
+
+        #output {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered">
+        <h1> Übung 8 - Asynchrones JS </h1>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+
+        let a;
+        let b;
+
+        Promise.all([
+            fetch("./resources/A.txt") // [0]
+                .then( response => {
+                    a = response.text();
+                }),
+            fetch("./resources/B.txt") // [1]
+                .then( response => {
+                    b = response.text();
+                })
+        ]);
+
+        let text = [];
+    </script>
+</body>
+</html>
