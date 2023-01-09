@@ -25,183 +25,199 @@
     </tr>
 </table>
 
-<h1> Übung 1 </h1>
+<div class="centered">
+    <div class="header">
+        <h1> Übung 1 </h1>
+    </div>
 
-<h2> Aufgabe 1.1 Fachliche Argumentation über Erfolgsprinzipien des WWW</h2>
-<ol>
-    <li>
-        <h3> Mit welchen fachlichen Argumenten wurde das WWW-Proposal von TBL abgelehnt? </h3>
-        <ul>
-            <li>
-                Das ist nicht das, was sie sich unter "Hypertext" vorgestellt hatten. Sondern: Keine Möglichkeit für
-                Broken-Links:
-                <i>"Es solle alles sauber sein"</i>.<br>
-            </li>
-            <li>
-                Es wurde außerdem als "zu vage" verstanden: Verwechslung mit Evolvierbarkeit!
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3> Was sind die fachlichen Argumente, warum das WWW dennoch ein Erfolg wurde? </h3>
-        <ul>
-            <li>
-                Das WWW-Konzept wurde von <i>Marc Andreesen</i>, NCSA, entdeckt. Durch ihn
-                konnte der erste W3-Browser gebaut werden (Mosaic). <br>
-                &emsp; → Dadurch wurde die erste W3-Konferenz gehalten und die Gründung des W3-Consortium eingeleitet.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3> Was wäre der Preis für die garantierte Verhinderung von <i>“broken links”</i>? </h3>
-        <ul>
-            <li>
-                <b><i>Referenzielle Integrität</i></b> sollte bewahrt sein <br>
-                &emsp; ⇒ Preis: <b>Zeit</b>. Man müsste, vor allem beim Löschen, überall
-                "Fremdschlüssel" entsprechend aktualisieren, die auf das gelöschte Element zeigten.
-                Bei einem WORLD-wide-web mit extrem vielen Websites wäre so ein Vorgang viel zu langsam. <br>
-            </li>
-        </ul>
-    </li>
-</ol>
+    <div class="header">
+        <h2> Aufgabe 1.1<br> Fachliche Argumentation über Erfolgsprinzipien des WWW</h2>
+    </div>
+    <div class="content">
+    <ol>
+        <li>
+            <h3> Mit welchen fachlichen Argumenten wurde das WWW-Proposal von TBL abgelehnt? </h3>
+            <ul>
+                <li>
+                    Das ist nicht das, was sie sich unter "Hypertext" vorgestellt hatten. Sondern: Keine Möglichkeit für
+                    Broken-Links:
+                    <i>"Es solle alles sauber sein"</i>.<br>
+                </li>
+                <li>
+                    Es wurde außerdem als "zu vage" verstanden: Verwechslung mit Evolvierbarkeit!
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3> Was sind die fachlichen Argumente, warum das WWW dennoch ein Erfolg wurde? </h3>
+            <ul>
+                <li>
+                    Das WWW-Konzept wurde von <i>Marc Andreesen</i>, NCSA, entdeckt. Durch ihn
+                    konnte der erste W3-Browser gebaut werden (Mosaic). <br>
+                    &emsp; → Dadurch wurde die erste W3-Konferenz gehalten und die Gründung des W3-Consortium eingeleitet.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3> Was wäre der Preis für die garantierte Verhinderung von <i>“broken links”</i>? </h3>
+            <ul>
+                <li>
+                    <b><i>Referenzielle Integrität</i></b> sollte bewahrt sein <br>
+                    &emsp; ⇒ Preis: <b>Zeit</b>. Man müsste, vor allem beim Löschen, überall
+                    "Fremdschlüssel" entsprechend aktualisieren, die auf das gelöschte Element zeigten.
+                    Bei einem WORLD-wide-web mit extrem vielen Websites wäre so ein Vorgang viel zu langsam. <br>
+                </li>
+            </ul>
+        </li>
+    </ol>
+</div>
 
-<h2> Aufgabe 1.2 HTTP </h2>
-<ol>
-    <li>
-        <b> Status Code 200: "OK" </b><br>
-        &ensp; → Anfrage richtig verarbeitet.
-    </li>
-    <li>
-        <b> Status Code 301: "Moved Permanently" </b><br>
-        &ensp; → Die URL wurde permanent geändert und die Neue wird im Response angegeben.
-    </li>
-    <li>
-        <b> Status Code 400: "Bad Request" </b><br>
-        &ensp; → Fehlerhafte Anfrage des Clients. Der Server führt die Request nicht aus.
-    </li>
-    <li>
-        <b>Status Code 403: "Forbidden" </b><br>
-        &ensp; → Keine Zugriffsrechte.
-    </li>
-    <li>
-        <b>Verbesserungen der Performanz von häufigen OPTIONS-Anfragen: </b><br>
-        &ensp; → Die cacheable Methode "GET" verwenden, um die OPTIONS zu cachen.
-    </li>
-</ol>
-
-<h2> Aufgabe 1.3 HTML-Literatur lesen und Fragen beantworten </h2>
-<ol>
-    <li>
-        <h3> Was ist HTML? </h3>
-        <ul>
+    <div class="header">
+        <h2> Aufgabe 1.2 <br> HTTP Status Codes </h2>
+    </div>
+    <div class="content">
+        <ol>
             <li>
-                HTML steht für Hyper Text Markup Language und ist der Standard für
-                die erstellung von Webseiten.
-                Es beschreibt die Struktur der Webseite mithilfe von Elementen,
-                die dem Browser zeigen, wie etwas dargestellt werden soll.
+                <b> Status Code 200: "OK" </b><br>
+                &ensp; → Anfrage richtig verarbeitet.
             </li>
-        </ul>
-    </li>
-    <li>
-        <h3> Wie kann man eine geschachtelte geordnete Liste der
-            Schachtelungstiefe 3 erzeugen? </h3>
-        <table style="padding: 5px">
-            <tr>
-                <th><h3>Code</h3></th>
-                <th><h3>Beispiel</h3></th>
-            </tr>
-            <tr>
-                <td><img src="resources/geschachtelte_liste_tiefe_3.png"
-                         alt="Geschachtelte Liste der Tiefe 3 Code"></td>
-                <td>
-                    <ol>
-                        <li> Schachtelungstiefe - 1
+            <li>
+                <b> Status Code 301: "Moved Permanently" </b><br>
+                &ensp; → Die URL wurde permanent geändert und die Neue wird im Response angegeben.
+            </li>
+            <li>
+                <b> Status Code 400: "Bad Request" </b><br>
+                &ensp; → Fehlerhafte Anfrage des Clients. Der Server führt die Request nicht aus.
+            </li>
+            <li>
+                <b>Status Code 403: "Forbidden" </b><br>
+                &ensp; → Keine Zugriffsrechte.
+            </li>
+            <li>
+                <b>Verbesserungen der Performanz von häufigen OPTIONS-Anfragen: </b><br>
+                &ensp; → Die cacheable Methode "GET" verwenden, um die OPTIONS zu cachen.
+            </li>
+        </ol>
+    </div>
+
+    <div class="header">
+     <h2> Aufgabe 1.3 <br> HTML-Literatur lesen und Fragen beantworten </h2>
+    </div>
+    <div class="content">
+        <ol>
+            <li>
+                <h3> Was ist HTML? </h3>
+                <ul>
+                    <li>
+                        HTML steht für Hyper Text Markup Language und ist der Standard für
+                        die erstellung von Webseiten.
+                        Es beschreibt die Struktur der Webseite mithilfe von Elementen,
+                        die dem Browser zeigen, wie etwas dargestellt werden soll.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h3> Wie kann man eine geschachtelte geordnete Liste der
+                    Schachtelungstiefe 3 erzeugen? </h3>
+                <table style="padding: 5px">
+                    <tr>
+                        <th><h3>Code</h3></th>
+                        <th><h3>Beispiel</h3></th>
+                    </tr>
+                    <tr>
+                        <td><img src="resources/geschachtelte_liste_tiefe_3.png"
+                                 alt="Geschachtelte Liste der Tiefe 3 Code"></td>
+                        <td>
                             <ol>
-                                <li> Schachtelungstiefe - 2
+                                <li> Schachtelungstiefe - 1
                                     <ol>
-                                        <li> Schachtelungstiefe - 3
+                                        <li> Schachtelungstiefe - 2
                                             <ol>
+                                                <li> Schachtelungstiefe - 3
+                                                    <ol>
+                                                    </ol>
+                                                </li>
                                             </ol>
                                         </li>
                                     </ol>
                                 </li>
                             </ol>
-                        </li>
-                    </ol>
-                </td>
-            </tr>
-        </table>
-    </li>
-    <li>
-        <h3> Wie ist eine HTML-Tabelle aufgebaut? </h3>
-        <ul>
-            <li> Eine HTML-Tabelle beginnt mit dem Tag &lt;table&gt; (&lt;/table&gt;).</li>
-            <li> Eine Reihe wird mit &lt;tr&gt; (&lt;/tr&gt;) (Table Row) erstellt und ein Element mit &lt;td&gt; (&lt;/td)
-                (Table Data).
-            </li>
-            <li> Eine Spaltenüberschrift erstellt man mit &lt;th&gt; (&lt;/th&gt;) (Table Header)</li>
-        </ul>
-    </li>
-    <li>
-        <h3> Welche Konventionen sollte man bei Pfaden und Dateinamen beachten? </h3>
-        <ul>
-            <li>
-                Immer lower-case filenames benutzen. Sonst kann es Probleme mit einigen Web-Servern geben, <br>
-                die Case sensitive sind.
+                        </td>
+                    </tr>
+                </table>
             </li>
             <li>
-                HTML files sollten immer .html (oder .htm) als File-Extension haben.<br>
-                CSS files sollten immer .css als File-Extension haben.<br>
-                JavaScript files sollten immer .js als File-Extension haben.
+                <h3> Wie ist eine HTML-Tabelle aufgebaut? </h3>
+                <ul>
+                    <li> Eine HTML-Tabelle beginnt mit dem Tag &lt;table&gt; (&lt;/table&gt;).</li>
+                    <li> Eine Reihe wird mit &lt;tr&gt; (&lt;/tr&gt;) (Table Row) erstellt und ein Element mit &lt;td&gt; (&lt;/td)
+                        (Table Data).
+                    </li>
+                    <li> Eine Spaltenüberschrift erstellt man mit &lt;th&gt; (&lt;/th&gt;) (Table Header)</li>
+                </ul>
             </li>
             <li>
-                Die default Seite sollte index.html oder default.html heißen
+                <h3> Welche Konventionen sollte man bei Pfaden und Dateinamen beachten? </h3>
+                <ul>
+                    <li>
+                        Immer lower-case filenames benutzen. Sonst kann es Probleme mit einigen Web-Servern geben, <br>
+                        die Case sensitive sind.
+                    </li>
+                    <li>
+                        HTML files sollten immer .html (oder .htm) als File-Extension haben.<br>
+                        CSS files sollten immer .css als File-Extension haben.<br>
+                        JavaScript files sollten immer .js als File-Extension haben.
+                    </li>
+                    <li>
+                        Die default Seite sollte index.html oder default.html heißen
+                    </li>
+                    <li>
+                        Bei Pfaden: Bedenken ob man absolute oder relative Dateipfade angibt! <br>
+                        Die Dateien sollten außerdem nicht den Ort wechseln während man sich auf der Seite befindet.
+                    </li>
+                </ul>
             </li>
             <li>
-                Bei Pfaden: Bedenken ob man absolute oder relative Dateipfade angibt! <br>
-                Die Dateien sollten außerdem nicht den Ort wechseln während man sich auf der Seite befindet.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3> Wie baut man in HTML ein Menü? </h3>
-        <ul>
-            <li>
-                Man kann mit Listen und Links sich ein Menü zusammenbauen, der dann auf die anderen
-                HTML-Dokumenten zeigt.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3> Welche Attribute sollte man bei Bildern wie verwenden? </h3>
-        <ul>
-            <li>
-                &lt;img&gt;: Tag für das einbetten von Bildern. Keine schließenden Klammern.
+                <h3> Wie baut man in HTML ein Menü? </h3>
+                <ul>
+                    <li>
+                        Man kann mit Listen und Links sich ein Menü zusammenbauen, der dann auf die anderen
+                        HTML-Dokumenten zeigt.
+                    </li>
+                </ul>
             </li>
             <li>
-                src: URL des Bildes. (Source)
+                <h3> Welche Attribute sollte man bei Bildern wie verwenden? </h3>
+                <ul>
+                    <li>
+                        &lt;img&gt;: Tag für das einbetten von Bildern. Keine schließenden Klammern.
+                    </li>
+                    <li>
+                        src: URL des Bildes. (Source)
+                    </li>
+                    <li>
+                        alt: Text der dargestellt wird, wenn es einen Fehler in der src, eine langsame Verbindung,
+                        oder der User ein Screen-Reader benutzt.
+                    </li>
+                    <li>
+                        width/height: Breite und Höhe des Bilds in pixeln. W3School empfiehlt allerdings style
+                    </li>
+                    <li>
+                        CSS float benutzen, um das Bild neben dem Text darstellen zu lassen.
+                    </li>
+                </ul>
             </li>
             <li>
-                alt: Text der dargestellt wird, wenn es einen Fehler in der src, eine langsame Verbindung,
-                oder der User ein Screen-Reader benutzt.
+                <h3> Bilden Sie das HTML-Wireframe aus der Übung nach </h3>
+                <ul>
+                    <li>
+                        <a href="4.html" target="_blank">Nachbildung</a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                width/height: Breite und Höhe des Bilds in pixeln. W3School empfiehlt allerdings style
-            </li>
-            <li>
-                CSS float benutzen, um das Bild neben dem Text darstellen zu lassen.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3> Bilden Sie das HTML-Wireframe aus der Übung nach </h3>
-        <ul>
-            <li>
-                <a href="4.html" target="_blank">Nachbildung</a>
-            </li>
-        </ul>
-    </li>
-</ol>
+        </ol>
+    </div>
+</div>
 
 <table style="border-collapse: collapse">
     <tr>
