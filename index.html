@@ -12,7 +12,7 @@
         }
 
         ul {
-            list-style: none;
+            list-style: none outside none;
         }
 
         li {
@@ -26,36 +26,84 @@
         }
 
         .hover_element {
-            display: flex;
-            justify-content: center;
             opacity: 0.6;
             transition: 0.2s;
-            width: 100px;
         }
 
         .hover_element:hover {
             opacity: 1;
             transform: translate(5px, 0);
         }
+
+        .header {
+            background-color: #2b2b2b;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            margin: 20px;
+            text-align: left;
+            color: #e3e3e3
+        }
+
+        .biography-table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+        }
+        td, th {
+            width: 50%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="centered">
-        <h1> Semesterprojekt Homepage "Solution-Navigation" </h1>
-    </div>
-    <div class="centered">
-        <h3> by Erik Rohr </h3>
+    <div class="header">
+        <h1>
+            Semesterprojekt Homepage
+            <h2>"Solution-Navigator"</h2>
+        </h1>
     </div>
 
-    <h2> Menü </h2>
+    <div class="centered">
+        <h2> Allgemeines </h2>
+    </div>
+
+    <div class="content">
+        <table class="biography-table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Matrikel-Nummer
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Erik Rohr
+                </td>
+                <td>
+                    9040077
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="centered">
+        <h2> Übungen </h2>
+    </div>
     <ul>
-        <li> <a href="Exercises/1/1.html" target="_self"><div class="hover_element">Übung 1</div></a> </li>
-        <li> <a href="Exercises/2/1.html" target="_self"><div class="hover_element">Übung 2</div></a> </li>
-        <li> <a href="Exercises/3/1.html" target="_self"><div class="hover_element">Übung 3</div></a> </li>
-        <li> <a href="Exercises/4/1.html" target="_self"><div class="hover_element">Übung 4</div></a> </li>
-        <li> <a href="Exercises/5/1.html" target="_self"><div class="hover_element">Übung 5</div></a> </li>
-        <li> <a href="Exercises/6/1.html" target="_self"><div class="hover_element">Übung 6</div></a> </li>
-        <li> <a href="Exercises/7/1.html" target="_self"><div class="hover_element">Übung 7</div></a> </li>
+        <li> <a href="Exercises/1/1.html" target="_self"><div class="hover_element">Übung 1 | HTTP, URI & HTML</div></a> </li>
+        <li> <a href="Exercises/2/1.html" target="_self"><div class="hover_element">Übung 2 | CSS</div></a> </li>
+        <li> <a href="Exercises/3/1.html" target="_self"><div class="hover_element">Übung 3 | RWD</div></a> </li>
+        <li> <a href="Exercises/4/1.html" target="_self"><div class="hover_element">Übung 4 | JS</div></a> </li>
+        <li> <a href="Exercises/5/1.html" target="_self"><div class="hover_element">Übung 5 | DOM</div></a> </li>
+        <li> <a href="Exercises/6/1.html" target="_self"><div class="hover_element">Übung 6 | ES</div></a> </li>
+        <li> <a href="Exercises/7/1.html" target="_self"><div class="hover_element">Übung 7 | Functional Programming</div></a> </li>
+        <li> <a href="Exercises/7/1.html" target="_self"><div class="hover_element">Übung 8 | Asynchronous JavaScript</div></a> </li>
     </ul>
 </body>
 </html>
