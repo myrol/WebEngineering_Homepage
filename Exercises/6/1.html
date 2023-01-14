@@ -79,6 +79,12 @@
             /**
              * This method validates a string for correct bracket syntax.
              * It ignores anything that isn't in the brackets Map.
+             *
+             * Explanation:
+             * Any open bracket has to have a closed bracket and vise versa.
+             * Every bracket-pair HAS to be opened AND closed inside the outer bracket-pair (exception for first brackets).
+             * The idea is to use a stack.
+             *
              * @param phrase - entered string
              * @returns {boolean} - if the string is valid or not
              */
@@ -98,7 +104,7 @@
                     // Is it a closed bracket?
                     if (this.isClosedBracket(currentCharacter)) {
                         if (this.brackets.get(this.foundBrackets[this.foundBrackets.length-1]) !== undefined) {
-                            this.foundBrackets.pop(currentCharacter);
+                            this.foundBrackets.pop();
                         } else {
                             return false;
                         }
