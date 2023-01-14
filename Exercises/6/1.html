@@ -102,8 +102,11 @@
                     }
 
                     // Is it a closed bracket?
+                    // => HAS TO BE GUARANTEED that the top of the stack is the corresponding opening bracket.
                     if (this.isClosedBracket(currentCharacter)) {
-                        if (this.brackets.get(this.foundBrackets[this.foundBrackets.length-1]) !== undefined) {
+                        // Compare corresponding open bracket (of closed bracket currentCharacter) to top of stack.
+                        // If identical: then this pair is valid.
+                        if (this.foundBrackets[this.foundBrackets.length-1] === this.getByValue(currentCharacter)) {
                             this.foundBrackets.pop();
                         } else {
                             return false;
@@ -124,6 +127,14 @@
                     }
                 }
                 return false;
+            }
+
+            // Source: https://stackoverflow.com/questions/47135661/how-can-i-get-a-key-in-a-javascript-map-by-its-value
+            getByValue(searchValue) {
+                for (let [key, value] of this.brackets.entries()) {
+                    if (value === searchValue)
+                        return key;
+                }
             }
         }
 
