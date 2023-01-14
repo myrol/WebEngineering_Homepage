@@ -8,6 +8,17 @@ a {
     color: #8888ff;
     text-decoration: none;
     font-size: 15pt;
+    display: inline-block;
+}
+
+a.hover_element {
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+a.hover_element:hover {
+    opacity: 1;
+    transform: translate(5px, 0);
 }
 
 li {
@@ -35,14 +46,21 @@ li {
     text-align: left;
     color: #e3e3e3;
     background-color: #282828;
-    padding: 5px 5px 5px 5px;
+    padding: 10px;
     border-radius: 10px;
+    width: 85%;
 }
-
 .centered-wide-table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+}
+
+.code {
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    font-family: monospace;
+    padding: 10px;
 }
 
 @media screen and (min-width: 700px) {
@@ -51,6 +69,17 @@ li {
     }
 
     .content {
-        width: 70%;
+        width: 600px;
+    }
+}
+
+/*
+    This is for the .centered class as a counter-measure
+    So there are no multiple unwanted colums.
+*/
+@media screen and (min-width: 1300px) {
+    .header {
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
