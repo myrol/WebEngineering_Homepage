@@ -5,6 +5,155 @@
 
     <meta charset="UTF-8">
     <title>Übung 4</title>
+</head>
+<body>
+    <div class="centered">
+        <div class="header">
+            <h1> Übung 4 </h1>
+            <h2> JavaScript </h2>
+        </div>
+
+        <div class="header">
+            <h2> Aufgabe 1 </h2>
+            <h3> Funktionen </h3>
+        </div>
+        <div class="content">
+            <p class="code">
+                function identity(x) {<br>
+                &ensp;&ensp;&ensp;&ensp;return x;<br>
+                }
+            </p>
+            <div class="input-elements">
+                <textarea id="i1" class="input-field" rows="1"></textarea>
+                <button id="b1" class="input-button">Eingeben</button>
+            </div>
+            <p id="o1" class="output"></p>
+        </div>
+        <div class="content">
+            <p class="code">
+                function identity_function(func) {<br>
+                &ensp;&ensp;&ensp;&ensp;return identity(x);<br>
+                }
+            </p>
+        </div>
+        <div class="content">
+            <p class="code">
+                function add(x, y) {<br>
+                &ensp;&ensp;&ensp;&ensp;return x + y;<br>
+                }
+            </p>
+            <div class="input-elements">
+                <textarea id="i2-1" class="input-field" rows="1"></textarea>
+                <textarea id="i2-2" class="input-field" rows="1"></textarea>
+                <button id="b2" class="input-button">Eingeben</button>
+            </div>
+            <p id="o2" class="output"></p>
+        </div>
+        <div class="content">
+            <p class="code">
+                function mul(x, y) {<br>
+                &ensp;&ensp;&ensp;&ensp;return x * y;<br>
+                }
+            </p>
+            <div class="input-elements">
+                <textarea id="i3-1" class="input-field" rows="1"></textarea>
+                <textarea id="i3-2" class="input-field" rows="1"></textarea>
+                <button id="b3" class="input-button">Eingeben</button>
+            </div>
+            <p id="o3" class="output"></p>
+        </div>
+        <div class="content">
+            <p class="code">
+                function addf(x) {<br>
+                &ensp;&ensp;&ensp;&ensp;return function(y) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return x + y;<br>
+                &ensp;&ensp;&ensp;&ensp;};<br>
+                }
+            </p>
+        </div>
+        <div class="content">
+            <p class="code">
+                function applyf(func) {<br>
+                &ensp;&ensp;&ensp;&ensp;return function(x) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return function(y) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return func(x, y);<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;};<br>
+                &ensp;&ensp;&ensp;&ensp;};<br>
+                }
+            </p>
+        </div>
+    </div>
+
+    <h1 onclick="console.log(applyf(add)(1)(1)); this.innerHTML = 'Clicked!';">Click me!</h1>
+    <h1 onclick="console.log(conflict(a3)); this.innerHTML = 'Clicked!';">Click me 2!</h1>
+    <h1 onclick="console.log(fib(x = prompt('Default is 1000'))); this.innerHTML = 'Clicked!';">Click me for fib number!</h1>
+    <h1 onclick="console.log(last_safe_integer_index()); this.innerHTML = last_safe_integer_index();">Click me for last safe int index!</h1>
+    <h1 onclick="console.log(last_max_value()); this.innerHTML = last_max_value();">Click me for last max value index!</h1>
+
+    <!-- Interaction   --->
+    <script>
+        // Set all output fields to have text '>'
+        const outputFields = document.querySelectorAll('p.output');
+        for (const field of outputFields) {
+            field.textContent = '> ';
+        }
+        // Set all input fields to have placeholders
+        const inputFields = document.querySelectorAll('textarea.input-field');
+        for (const field of inputFields) {
+            field.placeholder = 'Input Parameter!';
+        }
+
+        /*
+            This function takes in a function, and output field
+            and input values for the function to take in.
+
+            This is used for the interactiveness of the solutions
+        */
+        function calcUserInput(func, output, ...input) {
+            output.textContent = '> ' + func(...input);
+            visualOutputUpdate(output);
+        }
+
+        /*
+            Source: https://stackoverflow.com/questions/49732609/how-can-i-fade-text-in-using-javascript-with-button
+        */
+        function visualOutputUpdate(outputField) {
+            outputField.classList.add('update-field-animation');
+            setTimeout(() => outputField.classList.remove('update-field-animation'), 1000);
+        }
+
+        const identity_input = document.getElementById('i1');
+        const identity_button = document.getElementById('b1');
+        const identity_output = document.getElementById('o1');
+
+        identity_button.addEventListener('click',
+            () => calcUserInput(identity,
+                identity_output,
+                identity_input.value))
+
+        const add_input1 = document.getElementById('i2-1');
+        const add_input2 = document.getElementById('i2-2');
+        const add_button = document.getElementById('b2');
+        const add_output = document.getElementById('o2');
+
+        add_button.addEventListener('click',
+            () => calcUserInput(add,
+                add_output,
+                Number(add_input1.value),
+                Number(add_input2.value)))
+
+        const mul_input1 = document.getElementById('i3-1');
+        const mul_input2 = document.getElementById('i3-2');
+        const mul_button = document.getElementById('b3');
+        const mul_output = document.getElementById('o3');
+
+        mul_button.addEventListener('click',
+            () => calcUserInput(mul,
+                mul_output,
+                Number(mul_input1.value),
+                Number(mul_input2.value)))
+    </script>
+
     <!-- Teilaufgabe 1 --->
     <script>
         function identity(x) {
@@ -117,12 +266,5 @@
             }
         }
     </script>
-</head>
-<body>
-    <h1 onclick="console.log(applyf(add)(1)(1)); this.innerHTML = 'Clicked!';">Click me!</h1>
-    <h1 onclick="console.log(conflict(a3)); this.innerHTML = 'Clicked!';">Click me 2!</h1>
-    <h1 onclick="console.log(fib(x = prompt('Default is 1000'))); this.innerHTML = 'Clicked!';">Click me for fib number!</h1>
-    <h1 onclick="console.log(last_safe_integer_index()); this.innerHTML = last_safe_integer_index();">Click me for last safe int index!</h1>
-    <h1 onclick="console.log(last_max_value()); this.innerHTML = last_max_value();">Click me for last max value index!</h1>
 </body>
 </html>

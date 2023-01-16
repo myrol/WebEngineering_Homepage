@@ -4,6 +4,10 @@ body {
     font-family: Arial, serif
 }
 
+hr {
+    border: 1px solid #818181;
+}
+
 a {
     color: #8888ff;
     text-decoration: none;
@@ -21,6 +25,33 @@ a.hover_element:hover {
     transform: translate(5px, 0);
 }
 
+textarea.input-field {
+    color: #e1e1e1;
+    background-color: #2e2e2e;
+    resize: none;
+    border-radius: 5px;
+    line-height: 22px;
+    margin-right: 5px;
+}
+
+button.input-button {
+    color: #e1e1e1;
+    background-color: #3e3e3e;
+    border: 1px solid #676767;
+    padding: 5px;
+    border-radius: 5px;
+    transition: .18s;
+}
+
+button.input-button:hover {
+    background-color: #5e5e5e;
+    transform: scale(110%);
+}
+
+button.input-button:active {
+    transform: scale(90%);
+}
+
 li {
     color: #c1c1c1;
 }
@@ -33,12 +64,17 @@ li {
 }
 
 .header {
-    background-image: radial-gradient(#232323, #333333);
+    background-image: repeating-linear-gradient(45deg, #232323, #232323 5px, #2a2a2a 5px, #2a2a2a 10px);
+    border: 1px solid #2a2a2a;
     margin: 10px;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
     width: 100%;
+}
+
+.header * {
+    text-shadow: 0 0 10px #000000;
 }
 
 .content {
@@ -49,18 +85,57 @@ li {
     padding: 10px;
     border-radius: 10px;
     width: 85%;
+    transition: 0.25s;
 }
+
+.content:hover {
+    background-color: #2d2d2d;
+    transform: scale(101%);
+}
+
 .centered-wide-table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 }
 
-.code {
+p.code {
     background-color: #1e1e1e;
     border-radius: 5px;
     font-family: monospace;
     padding: 10px;
+}
+
+p.output {
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    border: 1px dashed #a3a3a3;
+    font-family: monospace;
+    padding: 10px;
+}
+
+div.input-elements {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+/* Source: https://stackoverflow.com/questions/49732609/how-can-i-fade-text-in-using-javascript-with-button */
+.update-field-animation {
+    -webkit-animation: highlight 1.0s forwards;
+}
+
+@keyframes highlight {
+    from {
+        background-color: #0f0f31;
+        border-color: #006fff;
+        transform: scale(101%);
+    }
+    to {
+        background-color: #1e1e1e;
+        border-color: #a3a3a3;
+        transform: scale(100%);
+    }
 }
 
 @media screen and (min-width: 700px) {
