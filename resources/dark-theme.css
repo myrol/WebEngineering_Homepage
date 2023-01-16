@@ -75,7 +75,7 @@ li {
 
 /*
     This is for the .centered class as a counter-measure
-    So there are no multiple unwanted colums.
+    So there are no multiple unwanted columns.
 */
 @media screen and (min-width: 1300px) {
     .header {
