@@ -82,6 +82,41 @@
                 }
             </p>
         </div>
+        <div class="header">
+            <h2> Aufgabe 2 </h2>
+            <h3> Objekte </h3>
+        </div>
+        <div class="content">
+            Prototypen-Generatoren:
+            <p class="code">
+                function Auto(kz) {<br>
+                &ensp;&ensp;&ensp;&ensp;return {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;kennzeichen : kz<br>
+                &ensp;&ensp;&ensp;&ensp;};<br>
+                }<br>
+                <br>
+                function Person(auto_kz) {<br>
+                &ensp;&ensp;&ensp;&ensp;return {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;auto_kennzeichen : auto_kz<br>
+                &ensp;&ensp;&ensp;&ensp;};<br>
+                }
+            </p>
+            <div class="input-elements">
+                <textarea id="i4-1" class="input-field" rows="1" placeholder="Kennzeichen"
+                          onkeyup="autoEnterField(event, this, document.getElementById('b4-1'));"></textarea>
+                <button id="b4-1" class="input-button">Auto generieren</button>
+            </div>
+            <div class="input-elements">
+                <textarea id="i4-2" class="input-field" rows="1" placeholder="Kennzeichen"></textarea>
+                <button id="b4-2" class="input-button">Person generieren</button>
+            </div>
+            <div class="input-elements">
+                <button id="b4-3" class="input-button">Auf Konflikte Prüfen</button>
+            </div>
+            <p id="o4-1" class="output">Liste Aller Autos</p>
+            <p id="o4-2" class="output">Liste Aller Personen</p>
+            <p id="o4-3" class="output">Konflikte</p>
+        </div>
     </div>
 
     <h1 onclick="console.log(applyf(add)(1)(1)); this.innerHTML = 'Clicked!';">Click me!</h1>
@@ -92,14 +127,39 @@
 
     <!-- Interaction   --->
     <script>
-        // Set all output fields to have text '>'
+        // Set all textareas default behaviour for enter:
+        const textareas = document.querySelectorAll('textarea.input-field');
+        for (const area of textareas) {
+            area.onkeyup = () => {
+                autoEnterField(event, this, document.getElementById('b' + area.id.substring(1)));
+            }
+        }
+
+        // Textarea: enter presses the button next to it:
+        function autoEnterField(event, field, button) {
+            if (event.keyCode === 13) {
+                button.click();
+                field.value = '';
+                event.preventDefault();
+            }
+        }
+
+        // Set all output fields to have text '> ' if nothing is set
         const outputFields = document.querySelectorAll('p.output');
         for (const field of outputFields) {
+            if (field.textContent !== '') {
+                continue;
+            }
+
             field.textContent = '> ';
         }
-        // Set all input fields to have placeholders
+        // Set all input fields to have placeholders if nothing is set
         const inputFields = document.querySelectorAll('textarea.input-field');
         for (const field of inputFields) {
+            if (field.placeholder !== '') {
+                continue;
+            }
+
             field.placeholder = 'Input Parameter!';
         }
 
@@ -152,6 +212,30 @@
                 mul_output,
                 Number(mul_input1.value),
                 Number(mul_input2.value)))
+
+        const obj_input1 = document.getElementById('i4-1');
+        const obj_input2 = document.getElementById('i4-2');
+        const obj_button1 = document.getElementById('b4-1');
+        const obj_button2 = document.getElementById('b4-2');
+        const obj_button3 = document.getElementById('b4-3');
+        const obj_output1 = document.getElementById('o4-1');
+        const obj_output2 = document.getElementById('o4-2');
+        const obj_output3 = document.getElementById('o4-3');
+
+        obj_button1.addEventListener('click',
+            () => calcUserInput(addAuto,
+                obj_output1,
+                obj_input1.value));
+
+        obj_button2.addEventListener('click',
+            () => calcUserInput(addPerson,
+                obj_output2,
+                obj_input2.value));
+
+        obj_button3.addEventListener('click',
+            () => calcUserInput(conflict_all,
+                obj_output3));
+
     </script>
 
     <!-- Teilaufgabe 1 --->
@@ -189,6 +273,9 @@
 
     <!-- Teilaufgabe 2 --->
     <script>
+        let autos = [];
+        let personen = [];
+
         function Auto(kz) {
             return {
                 kennzeichen : kz
@@ -201,21 +288,51 @@
             };
         }
 
-        var a1 = Auto('1');
-        var a2 = Auto('2');
-        var a3 = Auto('3');
-        var a4 = Auto('4');
+        function addAuto(kz) {
+            if (kz === '') return 'Kennzeichen eingeben!';
 
-        var p1 = Person('1');
-        var p2 = Person('2');
-        var p3 = Person('3');
-        var p4 = Person('1');
+            // No duplicates allowed!
+            let conflict = false;
+            for (const a of autos) {
+                if (a.kennzeichen === kz) {
+                    obj_output1.style = 'color: red';
+                    conflict = true;
+                    break;
+                }
+            }
 
-        var autos = [a1, a2, a3, a4];
-        var personen = [p1, p2, p3, p4];
+            if (!conflict) {
+                obj_output1.style = 'color: #e1e1e1';
+                autos.push(Auto(kz));
+            }
+
+            // Display
+            let output = '';
+            for (const a of autos) {
+                output += a.kennzeichen + ', ';
+            }
+            return output;
+        }
+
+        function addPerson(auto_kz) {
+            personen.push(Person(auto_kz));
+            let output = '';
+            for (const p of personen) {
+                output += p.auto_kennzeichen + ', ';
+            }
+            return output;
+        }
+
+        function updateDisplay(display) {
+            let output = '';
+            for (const a of autos) {
+                output += a.kennzeichen + ',<br>'
+            }
+            display.textContent = output;
+        }
 
         function conflict(auto) {
-            var matches = 0;
+            let matches = 0;
             for (let i in personen) {
                 if (personen[i].auto_kennzeichen === auto.kennzeichen) {
                     matches++;
@@ -223,6 +340,22 @@
             }
             // If more than one person is linked to car 'auto' it's a conflict.
             return matches > 1;
+        }
+
+        function conflict_all() {
+            let conflicts = [];
+            for (const a of autos) {
+                let output = ' ' + a.kennzeichen + ': ';
+                let matches = 0;
+                for (const p of personen) {
+                    if (a.kennzeichen === p.auto_kennzeichen) {
+                        matches++;
+                    }
+                }
+                output += matches + ' Besitzer';
+                conflicts.push(output);
+            }
+            return conflicts;
         }
     </script>
 
