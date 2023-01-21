@@ -118,6 +118,8 @@ div.input-elements {
     display: flex;
     justify-content: right;
     width: 100%;
+
+    margin-top: 5px;
 }
 
 /* Source: https://stackoverflow.com/questions/49732609/how-can-i-fade-text-in-using-javascript-with-button */
