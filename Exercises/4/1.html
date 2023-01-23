@@ -130,17 +130,18 @@
         // Set all textareas default behaviour for enter:
         const textareas = document.querySelectorAll('textarea.input-field');
         for (const area of textareas) {
-            area.onkeyup = () => {
-                autoEnterField(event, this, document.getElementById('b' + area.id.substring(1)));
-            }
+            area.addEventListener('keyup', () => {
+
+                autoEnterField(event, area, document.getElementById('b' + area.id.substring(1)));
+            })
         }
 
         // Textarea: enter presses the button next to it:
         function autoEnterField(event, field, button) {
             if (event.keyCode === 13) {
-                button.click();
-                field.value = '';
-                event.preventDefault();
+                event.preventDefault(); // Prevent default behaviour of adding a new line (not working?)
+                button.click(); // Click the button next to it
+                field.value = ''; // Clear input
             }
         }
 
