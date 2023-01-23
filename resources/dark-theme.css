@@ -99,7 +99,7 @@ li {
     width: 100%;
 }
 
-p.code {
+.code {
     background-color: #1e1e1e;
     border-radius: 5px;
     font-family: monospace;
