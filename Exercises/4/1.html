@@ -102,8 +102,7 @@
                 }
             </p>
             <div class="input-elements">
-                <textarea id="i4-1" class="input-field" rows="1" placeholder="Kennzeichen"
-                          onkeyup="autoEnterField(event, this, document.getElementById('b4-1'));"></textarea>
+                <textarea id="i4-1" class="input-field" rows="1" placeholder="Kennzeichen"></textarea>
                 <button id="b4-1" class="input-button">Auto generieren</button>
             </div>
             <div class="input-elements">
@@ -113,9 +112,51 @@
             <div class="input-elements">
                 <button id="b4-3" class="input-button">Auf Konflikte Prüfen</button>
             </div>
-            <p id="o4-1" class="output">Liste Aller Autos</p>
-            <p id="o4-2" class="output">Liste Aller Personen</p>
+            <p id="o4-1" class="output">Liste aller Autos</p>
+            <p id="o4-2" class="output">Liste aller Personen</p>
             <p id="o4-3" class="output">Konflikte</p>
+        </div>
+        <div class="header">
+            <h2> Aufgabe 3 </h2>
+            <h3> Fibonacci </h3>
+        </div>
+        <div class="content">
+            Berechnung der Fibonacci-Zahl
+            <p class="code">
+                function fib(n) {<br>
+                &ensp;&ensp;&ensp;&ensp;if (n === '') {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;n = 1000;<br>
+                &ensp;&ensp;&ensp;&ensp;}<br>
+                &ensp;&ensp;&ensp;&ensp;if (n < 0) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return -1;<br>
+                &ensp;&ensp;&ensp;&ensp;}<br>
+                &ensp;&ensp;&ensp;&ensp;if (n < fibs.length) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return fibs[n];<br>
+                &ensp;&ensp;&ensp;&ensp;}<br>
+                &ensp;&ensp;&ensp;&ensp;while (fibs.length <= n) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;fibs[fibs.length] = fibs[fibs.length-1] + fibs[fibs.length-2]<br>
+                &ensp;&ensp;&ensp;&ensp;}<br>
+                &ensp;&ensp;&ensp;&ensp;return fibs[fibs.length-1];<br>
+                }
+            </p>
+            <p class="code">
+                function last_safe_integer_index() {<br>
+                &ensp;&ensp;&ensp;&ensp;for (let i = 0; i < fibs.length; i++) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (fibs[i] >= Number.MAX_SAFE_INTEGER) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return i-1;<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}<br>
+                &ensp;&ensp;&ensp;&ensp;}<br>
+                }
+            </p>
+            <p class="code">
+                function last_max_value() {<br>
+                &ensp;&ensp;&ensp;&ensp;for (let i = 0; i < fibs.length; i++) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (fibs[i] > Number.MAX_VALUE) {<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return i-1;<br>
+                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}<br>
+                &ensp;&ensp;&ensp;&ensp;}<br>
+                }
+            </p>
         </div>
     </div>
 
@@ -131,18 +172,12 @@
         const textareas = document.querySelectorAll('textarea.input-field');
         for (const area of textareas) {
             area.addEventListener('keyup', () => {
-
-                autoEnterField(event, area, document.getElementById('b' + area.id.substring(1)));
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // Prevent default behaviour of adding a new line (not working?)
+                    document.getElementById('b' + area.id.substring(1)).click(); // Click the button next to it
+                    area.value = ''; // Clear input
+                }
             })
-        }
-
-        // Textarea: enter presses the button next to it:
-        function autoEnterField(event, field, button) {
-            if (event.keyCode === 13) {
-                event.preventDefault(); // Prevent default behaviour of adding a new line (not working?)
-                button.click(); // Click the button next to it
-                field.value = ''; // Clear input
-            }
         }
 
         // Set all output fields to have text '> ' if nothing is set
@@ -171,7 +206,7 @@
             This is used for the interactiveness of the solutions
         */
         function calcUserInput(func, output, ...input) {
-            output.textContent = '> ' + func(...input);
+            output.innerHTML = '> ' + func(...input);
             visualOutputUpdate(output);
         }
 
@@ -289,49 +324,58 @@
             };
         }
 
+        /*
+            This function adds a car object to the 'autos' array.
+            As no car can have the same license plate as another,
+            this function also checks for duplicates.
+         */
         function addAuto(kz) {
+            // If empty license plate, return an error message.
             if (kz === '') return 'Kennzeichen eingeben!';
 
-            // No duplicates allowed!
+            // Check for duplicates
             let conflict = false;
             for (const a of autos) {
                 if (a.kennzeichen === kz) {
-                    obj_output1.style = 'color: red';
+                    obj_output1.style = 'color: red'; // Mark output as red to indicate error
                     conflict = true;
                     break;
                 }
             }
 
+            // If no duplicates, set color back to white if not already.
             if (!conflict) {
                 obj_output1.style = 'color: #e1e1e1';
                 autos.push(Auto(kz));
             }
 
-            // Display
+            // Update Display
             let output = '';
+            const separator = '<br>&ensp;&ensp;';
             for (const a of autos) {
-                output += a.kennzeichen + ', ';
+                output += separator + a.kennzeichen;
             }
+            output = output.substring(separator.length); // Remove first comma and <br>
             return output;
         }
 
+        /*
+            Adds a person to the 'personen' array.
+         */
         function addPerson(auto_kz) {
             personen.push(Person(auto_kz));
             let output = '';
+            const separator = '<br>&ensp;&ensp;';
             for (const p of personen) {
-                output += p.auto_kennzeichen + ', ';
+                output += separator + p.auto_kennzeichen;
             }
+            output = output.substring(separator.length); // Remove first comma and <br>
             return output;
         }
 
-        function updateDisplay(display) {
-            let output = '';
-            for (const a of autos) {
-                output += a.kennzeichen + ',<br>'
-            }
-            display.textContent = output;
-        }
-
+        /*
+            Checks for any car 'auto' to have multiple persons assigned as it's owner.
+         */
         function conflict(auto) {
             let matches = 0;
             for (let i in personen) {
@@ -343,6 +387,9 @@
             return matches > 1;
         }
 
+        /*
+            Checks for all cars from 'autos' to have multiple persons assigned to them.
+         */
         function conflict_all() {
             let conflicts = [];
             for (const a of autos) {
@@ -353,7 +400,11 @@
                         matches++;
                     }
                 }
-                output += matches + ' Besitzer';
+                if (matches <= 1) {
+                    output += matches + ' Besitzer<br>';
+                } else {
+                    output += '<span style="color:red">' + matches + ' Besitzer</span><br>';
+                }
                 conflicts.push(output);
             }
             return conflicts;
@@ -368,15 +419,12 @@
             if (n === '') {
                 n = 1000;
             }
-
             if (n < 0) {
                 return -1;
             }
-
             if (n < fibs.length) {
                 return fibs[n];
             }
-
             while (fibs.length <= n) {
                 fibs[fibs.length] = fibs[fibs.length-1] + fibs[fibs.length-2]
             }
