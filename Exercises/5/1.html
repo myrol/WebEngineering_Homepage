@@ -5,131 +5,80 @@
     <title>Übung 5</title>
 
     <link rel="stylesheet" href="../../resources/dark-theme.css">
-
-    <style>
-        div {
-            color: #b3b3b3;
-            margin: auto;
-            font-size: 16pt;
-        }
-
-        .ueberschrift {
-            margin: auto;
-            width: 50%;
-            text-align: center;
-            font-family: "Fira Code", serif
-        }
-
-        .widebutton {
-            background: #cfcfcf;
-            border-radius: 10px;
-            font-weight: bold;
-            color: #1a1a1a;
-            width: 400px;
-        }
-
-        table {
-            width: 100%;
-            margin-top: 50px;
-            margin-bottom: 10px;
-        }
-
-        table, td, tr {
-            border: 1px solid #c4c4c4;
-        }
-
-        td {
-            padding: 10px;
-        }
-
-        .userinput {
-            margin: auto;
-            width: 70%;
-            text-align: center;
-        }
-
-        input {
-            border-radius: 10px;
-            width: 80%;
-        }
-
-        .darkmode {
-            color: #b3b3b3;
-        }
-
-        .timer {
-            font-family: "Fira Code", serif;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
-<div class="ueberschrift">
-    <h1> Performance Test </h1>
-</div>
-<table>
-    <tr>
-        <td>
-            <div id="one">One</div>
-        </td>
-        <td>
-            <div id="two">Two</div>
-        </td>
-        <td>
-            <div id="three">Three</div>
-        </td>
-        <td>
-            <div id="four">Four</div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div id="oneResult">0.0</div>
-        </td>
-        <td>
-            <div id="twoResult">0.0</div>
-        </td>
-        <td>
-            <div id="threeResult">0.0</div>
-        </td>
-        <td>
-            <div id="fourResult">0.0</div>
-        </td>
-    </tr>
-</table>
-<button class="widebutton" onclick="performanceTest()">Click me for performance test!</button>
+<div class="centered">
+    <div class="header">
+        <h1> Performance Test </h1>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td>
+                    <div id="one">One</div>
+                </td>
+                <td>
+                    <div id="two">Two</div>
+                </td>
+                <td>
+                    <div id="three">Three</div>
+                </td>
+                <td>
+                    <div id="four">Four</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="oneResult">0.0</div>
+                </td>
+                <td>
+                    <div id="twoResult">0.0</div>
+                </td>
+                <td>
+                    <div id="threeResult">0.0</div>
+                </td>
+                <td>
+                    <div id="fourResult">0.0</div>
+                </td>
+            </tr>
+        </table>
+        <div class="input-elements">
+            <button class="input-button" onclick="performanceTest()">Click me for performance test!</button>
+        </div>
+    </div>
 
-<div>
-    <div class="ueberschrift">
+    <div class="header">
         <h1>Rednerliste</h1>
     </div>
-    <div class="userinput">
-        <input id="redner" onclick="add()" placeholder="Neuer Redner">
-        <button onclick="add()"> Add </button>
+    <div class="content">
+        <div class="input-elements">
+            <textarea class="input-field" id="redner" rows="1" placeholder="Neuer Redner"></textarea>
+            <button class="input-button" onclick="add()"> Add </button>
+        </div>
+        <div>
+            <ul id="rednerlist" class="darkmode">
+            </ul>
+        </div>
     </div>
 </div>
-
-<div>
-    <ul id="rednerlist" class="darkmode">
-    </ul>
-</div>
-
 
 <!-- PERFORMANCE TEST -->
 <script>
     function performanceTest() {
-        let one = document.getElementById("one");
-        let two = document.getElementById("two");
-        let three = document.getElementById("three");
-        let four = document.getElementById("four");
+        const one = document.getElementById("one");
+        const two = document.getElementById("two");
+        const three = document.getElementById("three");
+        const four = document.getElementById("four");
 
         // p can be changed to use different timing methods.
-        let p = () => performance.now()
+        const p = () => performance.now();
         let results = [];
 
         let start = p(); // Set starting point
+        console.log(start);
         one.innerHTML = "innerHTML";
         results[0] = p() - start; // Calculate performance and store
+        console.log(p());
         // Repeat
 
         start = p();
@@ -214,8 +163,9 @@
         // And a <button> for stopping and starting the timer
         rednerlist.innerHTML += '' +
             '<li>' + rednerNames[rednerNames.length-1] + // Name
-            '<div class="timer" id="timer' + (rednerNames.length-1) + '"></div>' + // Timer-ID
-            '<button onclick="resetRedner()" id="b' + (rednerNames.length-1) + '" style="margin-left: 5px"></button></li>'; // Button ID
+            '<span class="code" id="timer' + (rednerNames.length-1) + '"></span>' + // Timer-ID
+            '<button class="input-button" onclick="resetRedner()" id="b' + (rednerNames.length-1) + '" style="margin-left: 5px"></button>' +
+            '</li>'; // Button ID
 
         // Update all button texts
         updateButtons(currentRedner)
