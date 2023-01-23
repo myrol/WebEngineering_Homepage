@@ -56,6 +56,10 @@ li {
     color: #c1c1c1;
 }
 
+table {
+    width: 100%;
+}
+
 .centered {
     display: flex;
     justify-content: center;
@@ -103,7 +107,7 @@ li {
     background-color: #1e1e1e;
     border-radius: 5px;
     font-family: monospace;
-    padding: 10px;
+    padding: 7px;
 }
 
 p.output {
