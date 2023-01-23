@@ -6,213 +6,184 @@
 
     <link rel="stylesheet" href="../../resources/dark-theme.css">
 
-    <style>
-        .centered_field {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .field {
-            width: 85%;
-            background: #3f3f3f;
-            color: #f1f1f1;
-            border-radius: 5px;
-            margin-bottom: 5px;
-        }
-
-        .button {
-            background: #c1c1c1;
-            border: 0;
-            border-radius: 5px;
-            width: 85%;
-            height: 25px
-        }
-
-        .text {
-            color: #e1e1e1;
-            font-family: Arial, serif;
-        }
-
-        #field {
-
-        }
-
-        @media screen and (min-width: 600px) {
-            .field {
-                width: 500px;
-            }
-        }
-
-        @media screen and (min-width: 400px) {
-            .button {
-                width: 150px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="centered_field">
-        <h1 class="text">
-            Übung 6 - ECMA Script
-        </h1>
+<div class="centered">
+    <div class="header">
+        <h1> Übung 6 - ECMA Script </h1>
     </div>
-    <div class="centered_field">
-        <textarea class="field" id="field" rows="10"></textarea>
+    <div class="header">
+        <h2> Aufgabe 1 </h2>
+        <h3> Klammernpaare </h3>
     </div>
-    <div class="centered_field">
-        <button class="button" onclick="validateBrackets()" id="btn">Validate</button>
+    <div class="content">
+        <textarea class="input-field"
+                  id="field"
+                  rows="5"
+                  style="width:100%; text-align: center"
+                  placeholder="Enter Brackets!"></textarea>
+        <div class="input-elements">
+            <button class="input-button" onclick="validateBrackets()" id="btn" style="width:100%">Validate</button>
+        </div>
     </div>
+    <div class="header">
+        <h2> Aufgabe 2 </h2>
+        <h3> Topologische Iterierbarkeit </h3>
+    </div>
+    <div class="content">
+        <p class="code">Source Code anschauen!</p>
+    </div>
+</div>
 
-    <script>
-        class BracketValidator {
-            constructor() {
-                this.brackets = new Map();
-                // Enter any bracket combination you want into the map.
-                this.brackets.set("(", ")");
-                this.brackets.set("[", "]");
-                this.brackets.set("{", "}");
+<script>
+    class BracketValidator {
+        constructor() {
+            this.brackets = new Map();
+            // Enter any bracket combination you want into the map.
+            this.brackets.set("(", ")");
+            this.brackets.set("[", "]");
+            this.brackets.set("{", "}");
 
-                this.foundBrackets = [];
-            }
-
-            /**
-             * This method validates a string for correct bracket syntax.
-             * It ignores anything that isn't in the brackets Map.
-             *
-             * Explanation:
-             * Any open bracket has to have a closed bracket and vise versa.
-             * Every bracket-pair HAS to be opened AND closed inside the outer bracket-pair (exception for first brackets).
-             * The idea is to use a stack.
-             *
-             * @param phrase - entered string
-             * @returns {boolean} - if the string is valid or not
-             */
-            validate(phrase) {
-                // Reset from last run
-                this.foundBrackets = [];
-                let currentPosition = 0;
-                while (currentPosition < phrase.length) {
-                    const currentCharacter = phrase[currentPosition];
-
-                    // Is it an open bracket?
-                    if (this.brackets.get(currentCharacter) !== undefined) {
-                        // This has to mean it's an open bracket, just push to stack.
-                        this.foundBrackets.push(currentCharacter);
-                    }
-
-                    // Is it a closed bracket?
-                    // => HAS TO BE GUARANTEED that the top of the stack is the corresponding opening bracket.
-                    if (this.isClosedBracket(currentCharacter)) {
-                        // Compare corresponding open bracket (of closed bracket currentCharacter) to top of stack.
-                        // If identical: then this pair is valid.
-                        if (this.foundBrackets[this.foundBrackets.length-1] === this.getByValue(currentCharacter)) {
-                            this.foundBrackets.pop();
-                        } else {
-                            return false;
-                        }
-                    }
-
-                    currentPosition++;
-                }
-
-                // Are there any open brackets left? if yes - fail.
-                return (this.foundBrackets.length === 0);
-            }
-
-            isClosedBracket(bracket) {
-                for (const b of this.brackets.values()) {
-                    if (bracket === b) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            // Source: https://stackoverflow.com/questions/47135661/how-can-i-get-a-key-in-a-javascript-map-by-its-value
-            getByValue(searchValue) {
-                for (let [key, value] of this.brackets.entries()) {
-                    if (value === searchValue)
-                        return key;
-                }
-            }
+            this.foundBrackets = [];
         }
 
-        const v = new BracketValidator();
-
-        const inputField = document.getElementById("field");
-
-        function validateBrackets() {
-            const result = v.validate(inputField.value);
-            console.log(inputField.textContent)
-            console.log(result);
-
-            if (result === true) {
-                document.getElementById("field").style.border="1px solid green";
-                document.getElementById("field").style.color="#ccffcc";
-            } else {
-                document.getElementById("field").style.border="1px solid red";
-                document.getElementById("field").style.color="#ffcccc";
-            }
-        }
-    </script>
-    <script>
-        /*
-            I didn't get the class to become an iterable.
-            If you want to iterate through Vorrang, use Vorrang.next();
+        /**
+         * This method validates a string for correct bracket syntax.
+         * It ignores anything that isn't in the brackets Map.
+         *
+         * Explanation:
+         * Any open bracket has to have a closed bracket and vise versa.
+         * Every bracket-pair HAS to be opened AND closed inside the outer bracket-pair (exception for first brackets).
+         * The idea is to use a stack.
+         *
+         * @param phrase - entered string
+         * @returns {boolean} - if the string is valid or not
          */
-        class Vorrang {
-            constructor(_elements) {
-                this.elements = new Map();
-                this.visited = [];
+        validate(phrase) {
+            // Reset from last run
+            this.foundBrackets = [];
+            let currentPosition = 0;
+            while (currentPosition < phrase.length) {
+                const currentCharacter = phrase[currentPosition];
 
-                // Construct maps
-                for (const elem of _elements) {
-                    this.elements.set(elem[0], elem[1]);
+                // Is it an open bracket?
+                if (this.brackets.get(currentCharacter) !== undefined) {
+                    // This has to mean it's an open bracket, just push to stack.
+                    this.foundBrackets.push(currentCharacter);
                 }
+
+                // Is it a closed bracket?
+                // => HAS TO BE GUARANTEED that the top of the stack is the corresponding opening bracket.
+                if (this.isClosedBracket(currentCharacter)) {
+                    // Compare corresponding open bracket (of closed bracket currentCharacter) to top of stack.
+                    // If identical: then this pair is valid.
+                    if (this.foundBrackets[this.foundBrackets.length-1] === this.getByValue(currentCharacter)) {
+                        this.foundBrackets.pop();
+                    } else {
+                        return false;
+                    }
+                }
+
+                currentPosition++;
             }
 
-            next() {
-                for (const pair of this.elements) {
-                    if (this.isAlreadyVisited(pair[0]) === false &&
-                            this.isValue(pair[0]) === false) {
-                        this.visited.push(pair[0])
-                        return pair[0];
-                    }
+            // Are there any open brackets left? if yes - fail.
+            return (this.foundBrackets.length === 0);
+        }
 
-                    if (this.isAlreadyVisited(pair[0]) &&
-                            this.isAlreadyVisited(pair[1]) === false) {
-                        this.visited.push(pair[1])
-                        return pair[1];
-                    }
+        isClosedBracket(bracket) {
+            for (const b of this.brackets.values()) {
+                if (bracket === b) {
+                    return true;
                 }
-                return null;
             }
+            return false;
+        }
 
-            isAlreadyVisited(element) {
-                for (const vis of this.visited) {
-                    if (element === vis) {
-                        return true;
-                    }
-                }
-                return false;
+        // Source: https://stackoverflow.com/questions/47135661/how-can-i-get-a-key-in-a-javascript-map-by-its-value
+        getByValue(searchValue) {
+            for (let [key, value] of this.brackets.entries()) {
+                if (value === searchValue)
+                    return key;
             }
+        }
+    }
 
-            isValue(element) {
-                for (const pair of this.elements) {
-                    if (element === pair[1]) {
-                        return true;
-                    }
-                }
-                return false;
+    const v = new BracketValidator();
+
+    const inputField = document.getElementById("field");
+
+    function validateBrackets() {
+        const result = v.validate(inputField.value);
+        console.log(inputField.textContent)
+        console.log(result);
+
+        if (result === true) {
+            document.getElementById("field").style.border="1px solid green";
+            document.getElementById("field").style.color="#ccffcc";
+        } else {
+            document.getElementById("field").style.border="1px solid red";
+            document.getElementById("field").style.color="#ffcccc";
+        }
+    }
+</script>
+<script>
+    /*
+        I didn't get the class to become an iterable.
+        If you want to iterate through Vorrang, use Vorrang.next();
+     */
+    class Vorrang {
+        constructor(_elements) {
+            this.elements = new Map();
+            this.visited = [];
+
+            // Construct maps
+            for (const elem of _elements) {
+                this.elements.set(elem[0], elem[1]);
             }
         }
 
-        const studentenLeben = new Vorrang([
-            ["schlafen", "studieren"],
-            ["essen", "studieren"],
-            ["studieren", "prüfen"]
-        ]);
-    </script>
+        next() {
+            for (const pair of this.elements) {
+                if (this.isAlreadyVisited(pair[0]) === false &&
+                        this.isValue(pair[0]) === false) {
+                    this.visited.push(pair[0])
+                    return pair[0];
+                }
+
+                if (this.isAlreadyVisited(pair[0]) &&
+                        this.isAlreadyVisited(pair[1]) === false) {
+                    this.visited.push(pair[1])
+                    return pair[1];
+                }
+            }
+            return null;
+        }
+
+        isAlreadyVisited(element) {
+            for (const vis of this.visited) {
+                if (element === vis) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        isValue(element) {
+            for (const pair of this.elements) {
+                if (element === pair[1]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    const studentenLeben = new Vorrang([
+        ["schlafen", "studieren"],
+        ["essen", "studieren"],
+        ["studieren", "prüfen"]
+    ]);
+</script>
 </body>
 </html>
