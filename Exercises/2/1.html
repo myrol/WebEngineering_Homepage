@@ -5,6 +5,12 @@
     <title>Übung 2</title>
 
     <link rel="stylesheet" href="../../resources/dark-theme.css">
+
+    <style>
+        li {
+            padding-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 <div class="centered">
@@ -16,6 +22,50 @@
         <h3> CSS Selektoren und CSS Farben</h3>
     </div>
     <div class="content">
+        Berechnen Sie die Spezifität folgender CSS-Selektoren:<br>
+        <p>
+            <span class="code"> div div div:focus .inner </span>
+            <p class="output">> 1 + 1 + 1 + 1 + 10 = 14</p>
+        </p>
+        <p>
+            <span class="code"> h1 + div.main </span>
+            <p class="output">> 1 + 1 + 10 = 12</p>
+        </p>
+        <p>
+            <span class="code"> div a:link[href*='h-brs'] </span>
+            <p class="output">> 1 + 1 + 1 + 10 = 13</p>
+        </p>
+        <p>
+            <span class="code"> nav > a:hover::before </span>
+            <p class="output">> 1 + 1 + 1 + 10 = 13</p>
+        </p>
+        <p>
+            <span class="code"> ul#primary-nav li.active </span>
+            <p class="output">> 1 + 100 + 1 + 1 = 103</p>
+        </p>
+    </div>
+    <div class="content">
+        Rechnen Sie folgende RGB-Werte in HSL-Werte um:<br>
+        <p>
+            <span class="code"> div div div:focus .inner </span>
+            <p class="output">> 1 + 1 + 1 + 1 + 10 = 14</p>
+        </p>
+        <p>
+            <span class="code"> h1 + div.main </span>
+            <p class="output">> 1 + 1 + 10 = 12</p>
+        </p>
+        <p>
+            <span class="code"> div a:link[href*='h-brs'] </span>
+            <p class="output">> 1 + 1 + 1 + 10 = 13</p>
+        </p>
+        <p>
+            <span class="code"> nav > a:hover::before </span>
+            <p class="output">> 1 + 1 + 1 + 10 = 13</p>
+        </p>
+        <p>
+            <span class="code"> ul#primary-nav li.active </span>
+            <p class="output">> 1 + 100 + 1 + 1 = 103</p>
+        </p>
     </div>
 </div>
 </body>
