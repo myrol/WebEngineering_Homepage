@@ -73,8 +73,7 @@
 
         function demethodize(func) {
             return function(x, y) {
-                const obj = x;
-                return func.call(obj, y);
+                return func.call(x, y);
             };
         }
 
@@ -212,7 +211,7 @@
             }
 
             let wordCountSorted = []; // Sorted array by occurances (descending)
-            for (word of wordCount.keys()) {
+            for (const word of wordCount.keys()) {
                 wordCountSorted.push(word);
             }
             wordCountSorted = wordCountSorted.sort(function compareFn(a, b) {
