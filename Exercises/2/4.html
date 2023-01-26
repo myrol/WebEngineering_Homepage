@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: "Calibri", sans-serif;
+            background-color: #a9d7d1;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            width: 50%;
+        }
+
+        td.left {
+            text-align: right;
+        }
+
+        textarea, select, input[type='number'] {
+            padding: 5px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        a {
+            color: #8888ff;
+            background-color: #282838;
+            padding: 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20pt;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #383848;
+        }
+
+        .centered {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            background-color: #fafafa;
+            width: 90%;
+            padding: 10px;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Übung 2 - Aufgabe 4</title>
+</head>
+<body>
+
+<a href="1.html" target="_self">Zurück</a>
+
+<div class="centered">
+    <h1> <b> Survey Form </b> </h1>
+</div>
+<div class="centered">
+    <div class="content">
+        <div class="centered">
+            Let us know how we can improve freeCodeCamp
+        </div>
+        <table>
+            <tr>
+                <td class="left">* Name:</td>
+                <td>
+                    <textarea placeholder="Enter your name" rows="1" cols="30"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">* Email:</td>
+                <td>
+                    <textarea placeholder="Enter your Email" rows="1" cols="30"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">* Age:</td>
+                <td>
+                    <input type="number" placeholder="Age" min="1" max="150">
+                </td>
+            </tr>
+            <tr>
+                <td class="left">Which option best describes your current role?</td>
+                <td>
+                    <select>
+                        <option> Student </option>
+                        <option> Graduate </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">* How likely is that you would recommend freeCodeCamp to a friend?</td>
+                <td>
+                    <input type="radio"> Definetly </input> <br>
+                    <input type="radio"> Maybe </input> <br>
+                    <input type="radio"> Not Sure </input> <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">What do you like most in FCC:</td>
+                <td>
+                    <select>
+                        <option> Select an option </option>
+                        <option> Nothing </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">* How likely is that you would recommend freeCodeCamp to a friend?</td>
+                <td>
+                    <input type="checkbox"> Front-end Projects </input> <br>
+                    <input type="checkbox"> Back-end Projects </input> <br>
+                    <input type="checkbox"> Data Visualization </input> <br>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

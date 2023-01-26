@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .resizable-image-div {
+            resize: both;
+            overflow: hidden;
+            border: 1px solid black;
+            padding: 5px;
+            line-height: 0px;
+            display:none;
+        }
+
+        .checkbox:checked + .resizable-image-div {
+            display: block;
+        }
+
+        .resizable-image-div img {
+            width: 100%;
+            height: 100%;
+        }
+
+        a {
+            color: #8888ff;
+            background-color: #282838;
+            padding: 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20pt;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #383848;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Übung 2 - Aufgabe 3</title>
+</head>
+<body>
+    <a href="1.html" target="_self">Zurück</a>
+
+    <h1> Übung 2.2 </h1>
+    <span>Hide and show using checkbox</span>
+    <input type="checkbox" class="checkbox">
+
+    <div class="resizable-image-div">
+        <img width="400px" src="resources/HBRS.webp" alt="HBRS-Picture">
+    </div>
+
+</body>
+</html>
