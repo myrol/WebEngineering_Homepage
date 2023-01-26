@@ -140,7 +140,7 @@ table {
     padding: 7px;
 }
 
-p.output {
+.output {
     background-color: #1e1e1e;
     border-radius: 5px;
     border: 1px dashed #a3a3a3;
