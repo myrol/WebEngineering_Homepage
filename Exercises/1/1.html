@@ -11,23 +11,22 @@
             padding: 10px;
         }
 
-        .content {
-            width: 50%;
+        @media screen and (min-width: 1000px) {
+            .header {
+                width: 700px;
+            }
+
+            .content {
+                width: 1000px;
+            }
         }
     </style>
 </head>
 <body>
-
-<table style="border-collapse: collapse">
-    <tr>
-        <td>
-            <a href="../../index.html">Hauptmenü</a>
-        </td>
-        <td>
-            <a href="../2/u2.html">Nächste Übung</a>
-        </td>
-    </tr>
-</table>
+<nav class="navi">
+    <a class="nav_hover_element" href="../../index.html">Hauptmenü</a>
+    <a class="nav_hover_element" href="../2/1.html">Nächste Übung</a>
+</nav>
 
 <div class="centered">
     <div class="header">
@@ -223,16 +222,5 @@
         </ol>
     </div>
 </div>
-
-<table style="border-collapse: collapse">
-    <tr>
-        <td>
-            <a href="../../index.html">Hauptmenü</a>
-        </td>
-        <td>
-            <a href="../2/u2.html">Nächste Übung</a>
-        </td>
-    </tr>
-</table>
 </body>
 </html>
