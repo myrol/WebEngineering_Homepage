@@ -24,11 +24,12 @@
             <h3> Funktionen </h3>
         </div>
         <div class="content">
-            <p class="code">
-                function identity(x) {<br>
-                &ensp;&ensp;&ensp;&ensp;return x;<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function identity(x) {
+    return x;
+}
+</code></pre>
+            </div>
             <div class="input-elements">
                 <textarea id="i1" class="input-field" rows="1"></textarea>
                 <button id="b1" class="input-button">Eingeben</button>
@@ -36,18 +37,20 @@
             <p id="o1" class="output"></p>
         </div>
         <div class="content">
-            <p class="code">
-                function identity_function(func) {<br>
-                &ensp;&ensp;&ensp;&ensp;return identity(x);<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function identity_function(func) {
+    return identity(x);
+}
+</code></pre>
+            </div>
         </div>
         <div class="content">
-            <p class="code">
-                function add(x, y) {<br>
-                &ensp;&ensp;&ensp;&ensp;return x + y;<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function add(x, y) {
+    return x + y;
+}
+</code></pre>
+            </div>
             <div class="input-elements">
                 <textarea id="i2-1" class="input-field" rows="1"></textarea>
                 <textarea id="i2-2" class="input-field" rows="1"></textarea>
@@ -56,11 +59,12 @@
             <p id="o2" class="output"></p>
         </div>
         <div class="content">
-            <p class="code">
-                function mul(x, y) {<br>
-                &ensp;&ensp;&ensp;&ensp;return x * y;<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function mul(x, y) {
+    return x * y;
+}
+</code></pre>
+            </div>
             <div class="input-elements">
                 <textarea id="i3-1" class="input-field" rows="1"></textarea>
                 <textarea id="i3-2" class="input-field" rows="1"></textarea>
@@ -69,24 +73,27 @@
             <p id="o3" class="output"></p>
         </div>
         <div class="content">
-            <p class="code">
-                function addf(x) {<br>
-                &ensp;&ensp;&ensp;&ensp;return function(y) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return x + y;<br>
-                &ensp;&ensp;&ensp;&ensp;};<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function addf(x) {
+    return function(y) {
+        return x + y;
+    };
+}
+</code></pre>
+
+            </div>
         </div>
         <div class="content">
-            <p class="code">
-                function applyf(func) {<br>
-                &ensp;&ensp;&ensp;&ensp;return function(x) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return function(y) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return func(x, y);<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;};<br>
-                &ensp;&ensp;&ensp;&ensp;};<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function applyf(func) {
+    return function(x) {
+        return function(y) {
+            return func(x, y);
+        };
+    };
+}
+</code></pre>
+            </div>
         </div>
         <div class="header">
             <h2> Aufgabe 2 </h2>
@@ -94,19 +101,20 @@
         </div>
         <div class="content">
             Prototypen-Generatoren:
-            <p class="code">
-                function Auto(kz) {<br>
-                &ensp;&ensp;&ensp;&ensp;return {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;kennzeichen : kz<br>
-                &ensp;&ensp;&ensp;&ensp;};<br>
-                }<br>
-                <br>
-                function Person(auto_kz) {<br>
-                &ensp;&ensp;&ensp;&ensp;return {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;auto_kennzeichen : auto_kz<br>
-                &ensp;&ensp;&ensp;&ensp;};<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function Auto(kz) {
+    return {
+        kennzeichen : kz
+    };
+}
+<br>
+function Person(auto_kz) {
+    return {
+        auto_kennzeichen : auto_kz
+    };
+}
+</code></pre>
+            </div>
             <div class="input-elements">
                 <textarea id="i4-1" class="input-field" rows="1" placeholder="Kennzeichen"></textarea>
                 <button id="b4-1" class="input-button">Auto generieren</button>
@@ -128,23 +136,24 @@
         </div>
         <div class="content">
             Berechnung der Fibonacci-Zahl <span class="code">n</span>
-            <p class="code">
-                function fib(n) {<br>
-                &ensp;&ensp;&ensp;&ensp;if (n === '') {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;n = 1000;<br>
-                &ensp;&ensp;&ensp;&ensp;}<br>
-                &ensp;&ensp;&ensp;&ensp;if (n < 0) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return -1;<br>
-                &ensp;&ensp;&ensp;&ensp;}<br>
-                &ensp;&ensp;&ensp;&ensp;if (n < fibs.length) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return fibs[n];<br>
-                &ensp;&ensp;&ensp;&ensp;}<br>
-                &ensp;&ensp;&ensp;&ensp;while (fibs.length <= n) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;fibs[fibs.length] = fibs[fibs.length-1] + fibs[fibs.length-2]<br>
-                &ensp;&ensp;&ensp;&ensp;}<br>
-                &ensp;&ensp;&ensp;&ensp;return fibs[fibs.length-1];<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function fib(n) {
+    if (n === '') {
+        n = 1000;
+    }
+    if (n < 0) {
+        return -1;
+    }
+    if (n < fibs.length) {
+        return fibs[n];
+    }
+    while (fibs.length <= n) {
+        fibs[fibs.length] = fibs[fibs.length-1] + fibs[fibs.length-2];
+    }
+    return fibs[fibs.length-1];
+}
+</code></pre>
+            </div>
             <div class="input-elements">
                 <textarea id="i5" class="input-field" rows="1" placeholder="2000"></textarea>
                 <button id="b5" class="input-button">Eingeben</button>
@@ -152,30 +161,33 @@
             <p id="o5" class="output"></p>
 
             Berechnung der maximal mit einer <span class="code">Integer</span> darstellbaren Zahl.
-            <p class="code">
-                function last_safe_integer_index() {<br>
-                &ensp;&ensp;&ensp;&ensp;for (let i = 0; i < fibs.length; i++) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (fibs[i] >= Number.MAX_SAFE_INTEGER) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return i-1;<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}<br>
-                &ensp;&ensp;&ensp;&ensp;}<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function last_safe_integer_index() {
+    for (let i = 0; i < fibs.length; i++) {
+        if (fibs[i] >= Number.MAX_SAFE_INTEGER) {
+            return i-1;
+        }
+    }
+}
+</code></pre>
+
+            </div>
             <div class="input-elements">
                 <button id="b6" class="input-button">Berechnen</button>
             </div>
             <p id="o6" class="output"></p>
 
             Berechnung der maximal mit einer <span class="code">Number</span> darstellbaren Zahl.
-            <p class="code">
-                function last_max_value() {<br>
-                &ensp;&ensp;&ensp;&ensp;for (let i = 0; i < fibs.length; i++) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (fibs[i] > Number.MAX_VALUE) {<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return i-1;<br>
-                &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}<br>
-                &ensp;&ensp;&ensp;&ensp;}<br>
-                }
-            </p>
+            <div class="code">
+<pre><code>function last_max_value() {
+    for (let i = 0; i < fibs.length; i++) {
+        if (fibs[i] > Number.MAX_VALUE) {
+            return i-1;
+        }
+    }
+}
+</code></pre>
+            </div>
             <div class="input-elements">
                 <button id="b7" class="input-button">Berechnen</button>
             </div>
