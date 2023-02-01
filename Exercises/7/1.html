@@ -26,10 +26,144 @@
             <h1> Übung 7 </h1>
             <h2> Funktionale Programmierung </h2>
         </div>
-        <h1>
-            Diese Übung hat nur funktionales JavaScript! <br>
-            Bitte in den Quellcode schauen...
-        </h1>
+        <div class="header">
+            <h2> Aufgabe 1 </h2>
+            <h3> Funktionen in JavaScript </h3>
+        </div>
+        <div class="content">
+            <div class="code">
+<pre><code>function add(x, y) {
+    return x + y;
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function identity_function(x) {
+    return function() { return x; };
+}
+</code></pre>
+            </div>
+<div class="code">
+<pre><code>function addf(x) {
+    return function(y) {
+        return x + y;
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function applyf(func) {
+    return function(x) {
+        return function(y) {
+            return func(x, y);
+        };
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function curry(func, param) {
+    return function(x) {
+        return func(param, x);
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function methodize(func) {
+    return function(x) {
+        return func(this, x);
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function demethodize(func) {
+    return function(x, y) {
+        return func.call(x, y);
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function twice(func) {
+    return function(x) {
+        return func(x, x);
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function composeu(func1, func2) {
+    return function(x) {
+        return func2(func1(x));
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function composeb(func1, func2) {
+    return function(x, y, z) {
+        return func2(func1(x, y), z);
+    };
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function once(func) {
+    return function(...x) {
+        const result = func(...x);
+        func = function() { return "ONCED OUT."; };
+        return result;
+    }
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function counterf(x) {
+    return {
+        value: x,
+        inc: function() { this.value++; },
+        dec: function() { this.value--; }
+    }
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function revocable(func) {
+    return {
+        invoke: function(...x) { return func(...x); },
+        revoke: function() { this.invoke = function() { return "REVOKED"; }; }
+    }
+}
+</code></pre>
+            </div>
+            <div class="code">
+<pre><code>function vector() {
+    return {
+        array : [],
+        append : function(value) { this.array.push(value) },
+        store : function(index, value) { this.array[index] = value; },
+        get : function(index) { return this.array[index]; }
+    }
+}
+</code></pre>
+            </div>
+        </div>
+        <div class="header">
+            <h2> Aufgabe 2 </h2>
+            <h3> Textanalyse mit filter-map-reduce </h3>
+        </div>
+        <div class="content">
+            <div id="plagiatserkennung" class="code"></div>
+            <div class="input-elements">
+                <input class="input-field" id="analyse_input" type="number" min="0" max="7" placeholder="Top n words">
+                <button class="input-button" id="analyse_button">Analysieren</button>
+            </div>
+            <div class="output" id="analyse_output">
+                >
+            </div>
+        </div>
     </div>
 
     <script>
@@ -61,10 +195,6 @@
             };
         }
 
-        const inc = addf(1);
-        const inc2 = applyf(add)(1);
-        const inc3 = curry(add, 1);
-
         function methodize(func) {
             return function(x) {
                 return func(this, x);
@@ -93,8 +223,6 @@
                 return func2(func1(x));
             };
         }
-
-        console.log("ComposeU'd inc(): " + composeu(inc, inc)(1));
 
         function composeb(func1, func2) {
             return function(x, y, z) {
@@ -163,8 +291,6 @@
         let stopwords;
         let text;
 
-        let mostOccuringWords;
-
         // Load both before processing
         Promise.all([
             fetch("./resources/stopwords.json")
@@ -173,10 +299,19 @@
             fetch("./resources/text.txt")
                 .then ( response => response.text() )
                 .then ( value => { text = value; })
-        ]).then( () => main() );
+        ]).then( () => document.getElementById('plagiatserkennung').textContent = text);
 
+
+        /**
+         * This function analyses a given _text parameter, filters out stopwords and characters like periods and
+         * question marks, maps the words to their occurrence in _text, sorts these and returns the first _top words.
+         * @param _text : String to be analysed
+         * @param _stopwords : String[] to be filtered out
+         * @param _top : Number to be reduced to
+         * @returns string[]
+         */
         function analyse(_text=text, _stopwords=stopwords, _top=3) {
-            _text = _text
+            const words = _text
                 .split(/[ \-,.!?:;"'(){}\[\]\s]+/) // Regex to filter out stuff
                 .filter((element) => {
                     return !_stopwords.includes(element)
@@ -184,32 +319,54 @@
 
             /*
                 Clever reduce method from: https://stackoverflow.com/questions/5667888/counting-the-occurrences-frequency-of-array-elements
+                Explanation:
                 Starts with an empty Map. >{}
                 Checks if an entry exists, if yes, increment value,
                     if not, create entry with value of 1.
                 Due to comma operator, return that Map and continue reducing.
             */
-            const occurrences = _text
+            const occurrences = words
                 .reduce((occurrences, current) => {
                     return occurrences.set(current, (occurrences.get(current) || 0) + 1), occurrences;
                 }, new Map());
 
-            _text = _text
-                .filter((current, index) => _text.indexOf(current) === index)
+            /*
+                This removes duplicates and sorts by descending frequency of occurrence in the text.
+             */
+            const sorted = words
+                .filter((current, index) => words.indexOf(current) === index)
                 .sort((a, b) => occurrences.get(b) - occurrences.get(a));
 
-            return _text.slice(0, _top);
+            return sorted.slice(0, _top);
         }
 
-        function main() {
-            const mostOccurringWords = analyse(text, stopwords);
-            // Print the three most common words.
-            const nMostCommon = 3;
-            for (let i = 0; i < mostOccurringWords.length; i++) {
-                if (i > nMostCommon-1) break;
-                console.log(mostOccurringWords[i]);
-            }
+        /*
+            This function takes in a function, and output field
+            and input values for the function to take in.
+
+            This is used for the interactiveness of the solutions
+        */
+        function calcUserInput(func, output, ...input) {
+            output.innerHTML = '> ' + func(...input);
+            visualOutputUpdate(output);
         }
+
+        /*
+            Source: https://stackoverflow.com/questions/49732609/how-can-i-fade-text-in-using-javascript-with-button
+        */
+        function visualOutputUpdate(outputField) {
+            outputField.classList.add('update-field-animation');
+            setTimeout(() => outputField.classList.remove('update-field-animation'), 1000);
+        }
+
+        const analyse_button = document.getElementById('analyse_button');
+        const analyse_input = document.getElementById('analyse_input');
+        const analyse_output = document.getElementById('analyse_output');
+
+        analyse_button.addEventListener('click',
+            () => calcUserInput(analyse,
+                analyse_output,
+                text, stopwords, analyse_input.value))
     </script>
 </body>
 </html>

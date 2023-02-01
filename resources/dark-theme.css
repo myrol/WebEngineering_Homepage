@@ -58,7 +58,7 @@ pre {
     transform: scale(110%);
 }
 
-textarea.input-field {
+.input-field {
     color: #e1e1e1;
     background-color: #2e2e2e;
     resize: none;
