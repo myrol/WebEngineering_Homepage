@@ -14,6 +14,8 @@
 
 Accounts "myrol" und "erikrohr" gehören beide mir. Ich versichere, dass ich alleine an diesem Projekt gearbeitet habe.
 
+Ich habe das Vorstellungs-Video auf Youtube ungelistet hochgeladen: https://youtu.be/qw-jpLL8DPk
+
 ### Struktur:
 /Exercises RAW/ → Rohe .txt Dateien, mit denen ich die Übungen bearbeitet habe. Nicht beachten.<br>
 /Exercises/ → Directory für die einzelnen Seiten, die die Lösungen zu den Übungen darstellen.<br>
