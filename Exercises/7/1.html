@@ -189,14 +189,14 @@
                     if not, create entry with value of 1.
                 Due to comma operator, return that Map and continue reducing.
             */
-            const occurances = _text
+            const occurrences = _text
                 .reduce((occurrences, current) => {
                     return occurrences.set(current, (occurrences.get(current) || 0) + 1), occurrences;
                 }, new Map());
 
             _text = _text
                 .filter((current, index) => _text.indexOf(current) === index)
-                .sort((a, b) => occurances.get(b) - occurances.get(a));
+                .sort((a, b) => occurrences.get(b) - occurrences.get(a));
 
             return _text.slice(0, _top);
         }
