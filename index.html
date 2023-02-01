@@ -39,10 +39,11 @@
                     <th> Matrikel-Nummer </th>
                 </tr>
                 <tr>
-                    <td> Erik Rohr </td>
-                    <td> 9040077 </td>
+                    <td> <span id="name"> ... </span> </td>
+                    <td> <span id="matnr"> ... </span> </td>
                 </tr>
             </table>
+            <span id="err" style="color:red"></span>
         </div>
 
         <div class="header">
@@ -62,5 +63,38 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        // Initialize DOM Elements
+        const name = document.getElementById("name");
+        const matrikelnummer = document.getElementById("matnr");
+        const err = document.getElementById("err");
+
+        // Path to the JSON
+        const path = "../resources/personal_infos.json"
+        fetch(path)
+            .then(response => {
+                /*
+                    Because 404 Errors are not network errors, fetch() will not throw errors to catch.
+                    We have to generate an error ourselves.
+                 */
+                if (response.ok) {
+                    return response.json()
+                }
+                throw new URIError(`FILE ${path} NOT FOUND`)
+            })
+            // Catch the URIError and set DOM Elements accordingly
+            .catch((error) => {
+                name.textContent = 'X';
+                matrikelnummer.textContent = 'X';
+                err.textContent = error;
+                console.error(error);
+            })
+            // If everything worked fine, set DOM Elements accordingly
+            .then(value => {
+                name.textContent = `${value["vorname"]} ${value["nachname"]}`;
+                matrikelnummer.textContent = `${value["matrikelnummer"]}`;
+            })
+    </script>
 </body>
 </html>
