@@ -14,7 +14,7 @@
 
 Accounts "myrol" und "erikrohr" gehören beide mir. Ich versichere, dass ich alleine an diesem Projekt gearbeitet habe.
 
-Das Vorstellungs-Video finden Sie in LEA oder ungelistet auf Youtube: https://youtu.be/qw-jpLL8DPk
+<s>Das Vorstellungs-Video finden Sie in LEA oder ungelistet auf Youtube</s>
 
 ### Struktur:
 /Exercises RAW/ → Rohe .txt Dateien, mit denen ich die Übungen bearbeitet habe. Nicht beachten.<br>
