@@ -4,7 +4,7 @@
 <table>
 <tr>
     <td> Matrikel-Nummer </td>    
-    <td style="color: lightblue"> 9040077 </td>
+    <td style="color: lightblue">  </td>
 </tr>
 <tr>
     <td> Name </td>
